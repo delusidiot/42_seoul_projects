@@ -1,0 +1,6 @@
+alias gww="gcc -Wall -Wextra -Werror"
+alias ll="ls -alF"
+alias norm="Norminette"
+export MAIL="jjeon@student.42seoul.kr"
+export NAME="jjeon"
+export LC_ALL=ko_KR.UTF-8
