@@ -32,6 +32,8 @@ int is_number(char *num)
 	int i;
 
 	i = -1;
+	if (num[0] == '-')
+		i++;
 	while (num[++i])
 		if (!ft_isdigit(num[i]))
 			return (FALSE);

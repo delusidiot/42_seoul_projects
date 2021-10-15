@@ -4,7 +4,7 @@ NAME = fdf
 # Folders
 LIBDIR = ./libft
 LINUX_MLX_DIR = ./minilibx_linux
-MAC_MLX_DIR = ./minilibx
+MAC_MLX_DIR = ./minilibx_macos
 SRCPATH = src/
 OBJPATH = obj/
 HDRPATH = include
@@ -12,11 +12,11 @@ LINUX_KEY = key_setting/linux
 MAC_KEY = key_setting/macos
 
 # Compiling flags
-LINUX_LFLAGS = -L $(LIBDIR) -lft -L$(LINUX_MLX_DIR)\
-		 	   -lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd
-		       
-MAC_LFLAGS =  -L $(LIBDIR) -lft -L$(MAC_MLX_DIR)\
-			  -lmlx -framework OpenGL -framework AppKit
+LINUX_LFLAGS =	-L $(LIBDIR) -lft -L$(LINUX_MLX_DIR)\
+		 		-lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd
+			   
+MAC_LFLAGS =	-L $(LIBDIR) -lft -L$(MAC_MLX_DIR)\
+				-lmlx -framework OpenGL -framework AppKit
 			  
 IFLAGS = -I $(HDRPATH) -I $(LIBDIR)/include
 CFLAGS = $(IFLAGS) #-Wall -Wextra -Werror $(IFLAGS)
@@ -25,11 +25,12 @@ LIBRARIES += $(LIBDIR)/libft.a
 # Source files paths
 FILES =	map/map_reader.c \
 		map/map_create.c \
+		map/map_check.c \
 		map/utils.c \
 		window/create_window.c\
 		window/key_event.c\
-		draw/draw.c\
 		draw/draw_line.c\
+		draw/utils.c\
 		error/error.c
 		
 MAIN_FILE = fdf.c
