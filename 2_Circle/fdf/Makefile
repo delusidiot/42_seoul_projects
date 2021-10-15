@@ -29,7 +29,8 @@ FILES =	map/map_reader.c \
 		window/create_window.c\
 		window/key_event.c\
 		draw/draw.c\
-		draw/draw_line.c
+		draw/draw_line.c\
+		error/error.c
 		
 MAIN_FILE = fdf.c
 BNS_FILE = fdf_bonus.c

@@ -28,7 +28,7 @@
 ** error message
 */
 # define MAP_READ_ERROR "map open error\n"
-# define MAP_SIZE_ERROR "map size error\n"
+# define MAP_INFO_ERROR "map information error\n"
 # define MAP_COORDINATE_ERROR "map coordinate error\n"
 
 typedef struct s_coor
@@ -108,13 +108,14 @@ void    bresenham(float x, float y, float x1, float y1, t_win *win);
 ** map read functions
 */
 
-void    map_init(t_win *win);
+int    map_init(t_win *win);
 void    map_free(t_win *win);
 void    map_make(t_win *win);
 int     map_error(char *message, t_win *win);
 int     map_reader(char *filename, t_win *win);
 void    map_setting(t_win *win);
-int num_check(char *num);
+int is_number(char *num);
+int is_hex(char *num);
 int hex_to_int(char *hex);
 
 /*
@@ -124,7 +125,9 @@ int hex_to_int(char *hex);
 int key_handler(int keycode, t_win *win);
 
 /*
-** mouse event functions
+** error message
 */
+void    put_error(char *err_msg);
+void    usage();
 
 #endif
