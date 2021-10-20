@@ -11,14 +11,20 @@ static int	window_create(t_win *win, char *title)
 	if (!full_title)
 		return (put_error("title make error"));
 	win->win_ptr = mlx_new_window(win->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, full_title);
+	if (!win->win_ptr)
+		return (put_error("win create error"));
+	win->img->img_ptr = mlx_new_image(win->mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
+	if (!win->img->img_ptr)
+		return (put_error("image create error"));
+	win->img->data = mlx_get_data_addr(win->img->img_ptr, &(win->img->bpp),
+						&(win->img->size), &(win->img->endian));
 	free(full_title);
 	return (TRUE);
 }
 
 static int	window_create_error(t_win *win){
-	if (win->img)
-		free(win->img);
 	map_free(win);
+	win_free(win);
 	return (put_error("window_create_error"));
 }
 
@@ -32,12 +38,20 @@ static void	keyboard_mouse_init(t_win *win)
 
 void	win_free(t_win *win)
 {
-	mlx_destroy_window(win->mlx_ptr, win->win_ptr);
-	mlx_destroy_display(win->mlx_ptr);
-	free(win->img);
-	free(win->camera);
-	free(win->mouse);
-	free(win->keyboard);
+	if (win->img->img_ptr)
+		mlx_destroy_image(win->mlx_ptr, win->img->img_ptr);
+	if (win->win_ptr)
+		mlx_destroy_window(win->mlx_ptr, win->win_ptr);
+	if (win->mlx_ptr)
+		mlx_destroy_display(win->mlx_ptr);
+	if (win->img)
+		free(win->img);
+	if (win->camera)
+		free(win->camera);
+	if (win->mouse)
+		free(win->mouse);
+	if (win->keyboard)
+		free(win->keyboard);
 }
 
 int win_init(t_win *win, char *title)

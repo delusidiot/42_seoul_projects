@@ -10,7 +10,9 @@ t_coor *init_coordinate(int x, int y, t_win *win)
 	coor->x = x;
 	coor->y = y;
 	coor->z = win->map->values[y][x].z;
-	if (win->map->values[y][x].color)
+	if (win->map->flag_color)
+		coor->color = get_z_color(coor, win);
+	else if (win->map->values[y][x].color)
 		coor->color = win->map->values[y][x].color;
 	else
 		coor->color = win->map->default_color;
@@ -77,6 +79,7 @@ int draw_map(t_win *win)
 		}
 		y++;
 	}
+	// mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img->img_ptr, 0, 0);
 	print_control(win);
 	print_status(win);
 	return (0);

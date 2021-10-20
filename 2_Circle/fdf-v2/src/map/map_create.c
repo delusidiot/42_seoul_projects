@@ -7,6 +7,7 @@ static void	map_setting(t_win *win)
 	win->map->color = 0;
 	win->map->default_color = 0xFFFFFF;
 	win->map->isometric = 0;
+	win->map->flag_color = 0;
 }
 
 int	map_make(t_win *win){

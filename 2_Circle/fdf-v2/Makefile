@@ -19,7 +19,7 @@ MAC_LFLAGS =	-L $(LIBDIR) -lft -L$(MAC_MLX_DIR)\
 				-lmlx -framework OpenGL -framework AppKit
 			  
 IFLAGS = -I $(HDRPATH) -I $(LIBDIR)/include
-CFLAGS = $(IFLAGS) #-Wall -Wextra -Werror $(IFLAGS)
+CFLAGS = -Wall -Wextra -Werror $(IFLAGS)
 LIBRARIES += $(LIBDIR)/libft.a
 
 # Source files paths
@@ -86,37 +86,24 @@ ifeq ($(UNAME), Darwin)
 endif
 	@echo $(GREEN)"$(UNAME) Done $@"$(END)
 
-bonus: $(OBJ)
-	@echo $(CYAN)"Compiling $@"
-	@$(MAKE) all -C $(LIBDIR)
-	@$(MAKE) -C $(LINUX_MLX_DIR)
-	@$(CC) $(CFLAGS) $(OBJ) $(BNS_SRC) -o $(NAME) $(LINUX_LFLAGS)
-	@echo $(GREEN)"Done $@"$(END)
-
 debug: $(OBJ)
 	@echo $(CYAN)"Creating debug files $@"
+ifeq ($(UNAME), Linux)
 	@$(MAKE) all -C $(LIBDIR)
 	@$(MAKE) -C $(LINUX_MLX_DIR)
-	@$(CC) $(CFLAGS) $(OBJ) $(MAIN_SRC) -g -o $(NAME) $(LINUX_LFLAGS)
-	@echo $(GREEN)"Done $@"$(END)
-	@echo $(WHITE)"Start with \"lldb $(NAME)\""$(END)
-
-bonus_debug: $(OBJ)
-	@echo $(CYAN)"Creating debug files $@"
+	@$(CC) $(CFLAGS) -I$(LINUX_KEY) $(OBJ) $(MAIN_OBJ) -g -o $(NAME) $(LINUX_LFLAGS)
+endif
+ifeq ($(UNAME), Darwin)
 	@$(MAKE) all -C $(LIBDIR)
-	@$(MAKE) -C $(LINUX_MLX_DIR)
-	@$(CC) $(CFLAGS) $(OBJ) $(BNS_SRC) -g -o $(NAME) $(LFLLINUX_LFLAGSAGS)
-	@echo $(GREEN)"Done $@"$(END)
+	@$(MAKE) -C $(MAC_MLX_DIR)
+	@$(CC) $(CFLAGS) -I$(MAC_KEY) $(OBJ) $(MAIN_OBJ) -g -o $(NAME) $(MAC_LFLAGS)
+endif
+	@echo $(GREEN)"$(UNAME) Done $@"$(END)
 	@echo $(WHITE)"Start with \"lldb $(NAME)\""$(END)
 
 leak_check:	debug
 	@echo $(CYAN) "valgrind start"
-	valgrind --leak-check=full --log-file=memcheck.txt -v --error-limit=no ./$(NAME) infile "cat" "wc -c" outfile
-	@echo $(END)
-
-bonus_leak_check: bonus_debug
-	@echo $(CYAN) "valgrind start"
-	valgrind --leak-check=full --log-file=memcheck.txt -v --error-limit=no ./$(NAME) infile "cat" "wc -c" outfile
+	valgrind --leak-check=full --log-file=memcheck.txt -v --error-limit=no ./test_shell/error_map.sh
 	@echo $(END)
 
 all: $(NAME)
@@ -139,9 +126,11 @@ fclean: clean
 re: fclean all
 
 norm:
+ifeq ($(UNAME), Darwin)
 	@$(MAKE) norm -C libft
 	@echo $(RED)
 	@norminette $(SRC) $(HDRPATH)
 	@echo $(END)
+endif
 
-.PHONY: all clean fclean re bonus norm debug leak_check bonus_debug bonus_leak_check
+.PHONY: all clean fclean re norm debug leak_check

@@ -44,6 +44,7 @@ typedef struct	s_map
 	int	color;
 	int	default_color;
 	int isometric;
+	int flag_color;
 }				t_map;
 
 typedef struct	s_img
@@ -138,6 +139,7 @@ int			line_draw(t_win *win);
 int draw_map(t_win *win);
 void	bresenham(t_coor *c1, t_coor *c2, t_win *win);
 int	get_color(t_coor cur, t_coor *c1, t_coor *c2, t_coor delta);
+int	get_z_color(t_coor *cur, t_win* win);
 
 
 /*

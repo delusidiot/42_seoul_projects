@@ -63,6 +63,11 @@ static void	default_color_handler(int keycode, t_win *win)
 			win->map->default_color = 0xFF;
 		else
 			win->map->default_color = 0xFFFFFF;
+		if (win->map->color % 8 == 4 || win->map->color % 8 == 5 
+		|| win->map->color % 8 == 6 || win->map->color % 8 == 7)
+			win->map->flag_color = 1;
+		else
+			win->map->flag_color = 0;
 	}
 }
 

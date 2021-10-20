@@ -10,26 +10,9 @@ static double	get_ratio(int c1, int c2, int cur)
 	return (ratio);
 }
 
-int	get_default_color(int z, t_map *map)
+static int	do_lerp(int c2, int c1, double ratio)
 {
-	double	ratio;
-
-	ratio = get_ratio(map->z_min, map->z_max, z);
-	if (ratio < 0.2)
-		return (0x9A1F6A);
-	else if (ratio < 0.4)
-		return (0xC2294E);
-	else if (ratio < 0.6)
-		return (0xEC4B27);
-	else if (ratio < 0.8)
-		return (0xEF8633);
-	else
-		return (0xF3AF3D);
-}
-
-static int	do_lerp(int c1, int c2, double ratio)
-{
-	return ((int)((ratio) * c1 + (1 - ratio) * c2));
+	return ((int)((ratio) * c2 + (1 - ratio) * c1));
 }
 
 int	get_color(t_coor cur, t_coor *c1, t_coor *c2, t_coor delta)
@@ -48,5 +31,19 @@ int	get_color(t_coor cur, t_coor *c1, t_coor *c2, t_coor delta)
 	red = do_lerp((c2->color >> 16) & 0xFF, (c1->color >> 16) & 0xFF, ratio);
 	green = do_lerp((c2->color >> 8) & 0xFF, (c1->color >> 8) & 0xFF, ratio);
 	blue = do_lerp(c2->color & 0xFF, c1->color & 0xFF, ratio);
+	return ((red << 16) | (green << 8) | blue);
+}
+
+int	get_z_color(t_coor *cur, t_win* win)
+{
+	double	ratio;
+	int		red;
+	int		green;
+	int		blue;
+
+	ratio = get_ratio(win->map->z_min, win->map->z_max, cur->z);
+	red = do_lerp((win->map->default_color >> 16) & 0xFF, 0xFF, ratio);
+	green = do_lerp((win->map->default_color >> 8) & 0xFF, 0xFF, ratio);
+	blue = do_lerp(win->map->default_color & 0xFF, 0xFF, ratio);
 	return ((red << 16) | (green << 8) | blue);
 }

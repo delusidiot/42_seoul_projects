@@ -1,5 +1,19 @@
 #include "fdf.h"
 
+static void	put_pixel(int x, int y, int color, t_win *win)
+{
+	int i;
+
+	if ((x < WIN_WIDTH && x >= 0) && \
+		(y < WIN_HEIGHT && y >= 0))
+		{
+			i = (x * win->img->bpp / 8) + (y * win->img->size);
+			win->img->data[i] = color;
+			win->img->data[++i] = color >> 8;
+			win->img->data[++i] = color >> 16;
+		}
+}
+
 static void	init_delta_and_step(t_coor *c1, t_coor *c2, t_coor *delta, t_coor *step)
 {
 	delta->x = int_abs(c2->x - c1->x);
@@ -20,6 +34,7 @@ void	bresenham(t_coor *c1, t_coor *c2, t_win *win)
 	t_coor	step;
 	t_coor	cur;
 	int		err[2];
+	(void)put_pixel;
 
 	init_delta_and_step(c1, c2, &delta, &step);
 	err[0] = delta.x - delta.y;

@@ -13,6 +13,9 @@ int	mouse_scroll_handler(int keycode, t_win *win)
 
 int	mouse_release_handler(int keycode, int x, int y, t_win *win)
 {
+	(void)keycode;
+	(void)x;
+	(void)y;
 	win->mouse->flag_mb1_pressed = 0;
 	win->mouse->flag_mb2_pressed = 0;
 	win->mouse->flag_mb3_pressed = 0;

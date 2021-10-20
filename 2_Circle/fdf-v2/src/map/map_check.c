@@ -11,7 +11,7 @@ static int	map_init(t_win *win)
 	return (TRUE);
 }
 
-int static coordinate_check(char *temp){
+static int coordinate_check(char *temp){
 	int i;
 	char **z_info;
 
@@ -32,7 +32,6 @@ int static coordinate_check(char *temp){
 int map_checker(char *filename, t_win *win)
 {
 	int i;
-	int j;
 	int fd;
 	char *line;
 	char **temp;

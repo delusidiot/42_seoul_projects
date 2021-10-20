@@ -3,7 +3,6 @@
 static int coordinate_insert(int i, char **temp, t_win *win)
 {
 	int j;
-	int l;
 	char **z_info;
 
 	j = -1;
@@ -20,6 +19,7 @@ static int coordinate_insert(int i, char **temp, t_win *win)
 			win->map->values[i][j].color = hex_to_int(z_info[1]);
 		free(temp[j]);
 	}
+	return (TRUE);
 }
 
 static int map_info_insert(char *filename, t_win *win)
