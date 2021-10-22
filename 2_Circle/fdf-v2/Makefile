@@ -14,12 +14,12 @@
 NAME = fdf
 
 # Folders
-LIBDIR = ./libft
-LINUX_MLX_DIR = ./minilibx_linux
-MAC_MLX_DIR = ./minilibx_macos
+LIBDIR = libft/
+LINUX_MLX_DIR = minilibx_linux/
+MAC_MLX_DIR = minilibx_macos/
 SRCPATH = src/
 OBJPATH = obj/
-HDRPATH = include
+HDRPATH = include/
 LINUX_KEY = key_setting/linux
 MAC_KEY = key_setting/macos
 
@@ -30,9 +30,9 @@ LINUX_LFLAGS =	-L $(LIBDIR) -lft -L$(LINUX_MLX_DIR)\
 MAC_LFLAGS =	-L $(LIBDIR) -lft -L$(MAC_MLX_DIR)\
 				-lmlx -framework OpenGL -framework AppKit
 			  
-IFLAGS = -I $(HDRPATH) -I $(LIBDIR)/include
+IFLAGS = -I $(HDRPATH) -I $(LIBDIR)include
 CFLAGS = -Wall -Wextra -Werror $(IFLAGS)
-LIBRARIES += $(LIBDIR)/libft.a
+LIBRARIES += $(LIBDIR)libft.a
 
 # Source files paths
 FILES =	map/map_reader.c \
@@ -78,10 +78,10 @@ WHITE = "\033[1;37m"
 $(OBJPATH)%.o: $(SRCPATH)%.c
 	@mkdir -p $(@D)
 ifeq ($(UNAME), Linux)
-	@$(CC) -c $(CFLAGS) -I$(LINUX_KEY) $< -o $@
+	@$(CC) -c $(CFLAGS) -I$(LINUX_KEY) -I $(LINUX_MLX_DIR) $< -o $@
 endif
 ifeq ($(UNAME), Darwin)
-	@$(CC) -c $(CFLAGS) -I$(MAC_KEY) $< -o $@
+	@$(CC) -c $(CFLAGS) -I$(MAC_KEY) -I $(MAC_MLX_DIR) $< -o $@
 endif
 
 $(NAME): $(OBJ) $(MAIN_OBJ)
@@ -89,26 +89,26 @@ $(NAME): $(OBJ) $(MAIN_OBJ)
 ifeq ($(UNAME), Linux)
 	@$(MAKE) all -C $(LIBDIR)
 	@$(MAKE) -C $(LINUX_MLX_DIR)
-	@$(CC) $(CFLAGS) -I$(LINUX_KEY) $(OBJ) $(MAIN_OBJ) -o $(NAME) $(LINUX_LFLAGS)
+	@$(CC) $(CFLAGS) -I$(LINUX_KEY) $(OBJ) $(MAIN_OBJ) -o $(NAME) $(LINUX_LFLAGS) -I $(LINUX_MLX_DIR)
 endif
 ifeq ($(UNAME), Darwin)
 	@$(MAKE) all -C $(LIBDIR)
 	@$(MAKE) -C $(MAC_MLX_DIR)
-	@$(CC) $(CFLAGS) -I$(MAC_KEY) $(OBJ) $(MAIN_OBJ) -o $(NAME) $(MAC_LFLAGS)
+	@$(CC) $(CFLAGS) -I$(MAC_KEY) $(OBJ) $(MAIN_OBJ) -o $(NAME) $(MAC_LFLAGS) -I $(MAC_MLX_DIR)
 endif
 	@echo $(GREEN)"$(UNAME) Done $@"$(END)
 
-debug: $(OBJ)
+debug: $(OBJ) $(MAIN_OBJ)
 	@echo $(CYAN)"Creating debug files $@"
 ifeq ($(UNAME), Linux)
 	@$(MAKE) all -C $(LIBDIR)
 	@$(MAKE) -C $(LINUX_MLX_DIR)
-	@$(CC) $(CFLAGS) -I$(LINUX_KEY) $(OBJ) $(MAIN_OBJ) -g -o $(NAME) $(LINUX_LFLAGS)
+	@$(CC) $(CFLAGS) -I$(LINUX_KEY) $(OBJ) $(MAIN_OBJ) -g -o $(NAME) $(LINUX_LFLAGS) -I $(LINUX_MLX_DIR)
 endif
 ifeq ($(UNAME), Darwin)
 	@$(MAKE) all -C $(LIBDIR)
 	@$(MAKE) -C $(MAC_MLX_DIR)
-	@$(CC) $(CFLAGS) -I$(MAC_KEY) $(OBJ) $(MAIN_OBJ) -g -o $(NAME) $(MAC_LFLAGS)
+	@$(CC) $(CFLAGS) -I$(MAC_KEY) $(OBJ) $(MAIN_OBJ) -g -o $(NAME) $(MAC_LFLAGS) -I $(MAC_MLX_DIR)
 endif
 	@echo $(GREEN)"$(UNAME) Done $@"$(END)
 	@echo $(WHITE)"Start with \"lldb $(NAME)\""$(END)
