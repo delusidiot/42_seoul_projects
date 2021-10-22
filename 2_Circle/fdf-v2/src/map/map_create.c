@@ -6,7 +6,7 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 05:05:11 by jjeon             #+#    #+#             */
-/*   Updated: 2021/10/23 05:05:12 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/10/23 05:16:45 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,31 +22,31 @@ static void	map_setting(t_win *win)
 	win->map->flag_color = 0;
 }
 
-int	map_make(t_win *win){
-	int i;
+int	map_make(t_win *win)
+{
+	int	i;
 
 	i = -1;
 	win->map->values = malloc(sizeof(t_value *) *(win->map->height));
 	if (!win->map->values)
 		return (FALSE);
-	while (++i < win->map->height){
+	while (++i < win->map->height)
 		win->map->values[i] = NULL;
-	}
 	map_setting(win);
 	return (TRUE);
 }
 
 void	map_free(t_win *win)
 {
-	int i;
-	
+	int	i;
+
 	i = -1;
 	if (!win->map)
-		return;
-	if (win->map->values){
-		while (++i < win->map->height && win->map->values[i]){
+		return ;
+	if (win->map->values)
+	{
+		while (++i < win->map->height && win->map->values[i])
 			free(win->map->values[i]);
-		}
 		free(win->map->values);
 		win->map->values = NULL;
 	}

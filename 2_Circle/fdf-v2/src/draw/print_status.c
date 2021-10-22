@@ -6,7 +6,7 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 05:04:56 by jjeon             #+#    #+#             */
-/*   Updated: 2021/10/23 05:04:58 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/10/23 05:32:25 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_control(t_win *win)
 {
-	int y;
+	int	y;
 
 	y = 0;
 	mlx_string_put(win->mlx_ptr, win->win_ptr, 15, y += 20, 0xFFFFFF, "<Controls>");

@@ -6,16 +6,16 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 05:04:33 by jjeon             #+#    #+#             */
-/*   Updated: 2021/10/23 05:04:36 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/10/23 05:15:06 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int coordinate_insert(int i, char **temp, t_win *win)
+static int	coordinate_insert(int i, char **temp, t_win *win)
 {
-	int j;
-	char **z_info;
+	int		j;
+	char	**z_info;
 
 	j = -1;
 	while (temp[++j])
@@ -34,12 +34,12 @@ static int coordinate_insert(int i, char **temp, t_win *win)
 	return (TRUE);
 }
 
-static int map_info_insert(char *filename, t_win *win)
+static int	map_info_insert(char *filename, t_win *win)
 {
-	int i;
-	int fd;
-	char *line;
-	char **temp;
+	int		i;
+	int		fd;
+	char	*line;
+	char	**temp;
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
@@ -60,13 +60,13 @@ static int map_info_insert(char *filename, t_win *win)
 	return (TRUE);
 }
 
-int map_reader(char *filename, t_win *win)
+int	map_reader(char *filename, t_win *win)
 {
 	if (!map_checker(filename, win))
 		return (map_error(MAP_INFO_ERROR, win));
 	if (!map_make(win))
 		return (map_error(MAP_MAKE_ERROR, win));
 	if (!map_info_insert(filename, win))
-	 	return (map_error(MAP_INSERT_ERROR, win));
+		return (map_error(MAP_INSERT_ERROR, win));
 	return (TRUE);
 }

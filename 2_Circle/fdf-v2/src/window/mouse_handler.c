@@ -6,7 +6,7 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 05:05:36 by jjeon             #+#    #+#             */
-/*   Updated: 2021/10/23 05:05:37 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/10/23 05:25:51 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ int	mouse_press_handler(int keycode, int x, int y, t_win *win)
 	if (keycode == MOUSE_UP_SCROLL || keycode == MOUSE_DOWN_SCROLL)
 		mouse_scroll_handler(keycode, win);
 	else if (keycode == MOUSE_BUTTON1)
-			win->mouse->flag_mb1_pressed = 1;
+		win->mouse->flag_mb1_pressed = 1;
 	else if (keycode == MOUSE_BUTTON2)
-			win->mouse->flag_mb2_pressed = 1;
+		win->mouse->flag_mb2_pressed = 1;
 	else if (keycode == MOUSE_BUTTON3)
-			win->mouse->flag_mb3_pressed = 1;
+		win->mouse->flag_mb3_pressed = 1;
 	mlx_clear_window(win->mlx_ptr, win->win_ptr);
 	draw_map(win);
 	return (0);

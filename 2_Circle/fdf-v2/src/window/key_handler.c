@@ -6,7 +6,7 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 05:05:29 by jjeon             #+#    #+#             */
-/*   Updated: 2021/10/23 05:05:30 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/10/23 05:25:24 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	extra_projection_handler(int keycode, t_win *win)
 		win->camera->alpha = 0;
 		win->camera->beta = 0;
 		win->camera->gamma = 0;
-		if (win->map->isometric++ % 2)	
+		if (win->map->isometric++ % 2)
 			win->camera->projection = ISOMETRIC;
 		else
 			win->camera->projection = PARALLEL;
@@ -69,14 +69,14 @@ static void	default_color_handler(int keycode, t_win *win)
 		win->map->color++;
 		if (win->map->color % 4 == 1)
 			win->map->default_color = 0xFF0000;
-		else if(win->map->color % 4 == 2)
+		else if (win->map->color % 4 == 2)
 			win->map->default_color = 0xFF00;
-		else if(win->map->color % 4 == 3)
+		else if (win->map->color % 4 == 3)
 			win->map->default_color = 0xFF;
 		else
 			win->map->default_color = 0xFFFFFF;
-		if (win->map->color % 8 == 4 || win->map->color % 8 == 5 
-		|| win->map->color % 8 == 6 || win->map->color % 8 == 7)
+		if (win->map->color % 8 == 4 || win->map->color % 8 == 5
+			|| win->map->color % 8 == 6 || win->map->color % 8 == 7)
 			win->map->flag_color = 1;
 		else
 			win->map->flag_color = 0;

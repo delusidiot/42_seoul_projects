@@ -6,7 +6,7 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 05:05:07 by jjeon             #+#    #+#             */
-/*   Updated: 2021/10/23 05:05:08 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/10/23 05:17:52 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ static int	map_init(t_win *win)
 	return (TRUE);
 }
 
-static int coordinate_check(char *temp){
-	int i;
-	char **z_info;
+static int	coordinate_check(char *temp)
+{
+	int		i;
+	char	**z_info;
 
 	z_info = ft_split(temp, ',');
 	i = -1;
@@ -41,12 +42,12 @@ static int coordinate_check(char *temp){
 	return (TRUE);
 }
 
-int map_checker(char *filename, t_win *win)
+int	map_checker(char *filename, t_win *win)
 {
-	int i;
-	int fd;
-	char *line;
-	char **temp;
+	int		i;
+	int		fd;
+	char	*line;
+	char	**temp;
 
 	fd = open(filename, O_RDONLY);
 	if (!map_init(win) || fd < 0)

@@ -6,15 +6,15 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 05:04:51 by jjeon             #+#    #+#             */
-/*   Updated: 2021/10/23 05:04:53 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/10/23 05:29:19 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_coor *init_coordinate(int x, int y, t_win *win)
+t_coor	*init_coor(int x, int y, t_win *win)
 {
-	t_coor *coor;
+	t_coor	*coor;
 
 	coor = (t_coor *)malloc(sizeof(t_coor));
 	if (!coor)
@@ -33,7 +33,7 @@ t_coor *init_coordinate(int x, int y, t_win *win)
 
 void	rotate_coordinate(t_coor *c, t_win *win)
 {
-	t_coor prev;
+	t_coor	prev;
 
 	prev.x = c->x;
 	prev.y = c->y;
@@ -48,7 +48,7 @@ void	rotate_coordinate(t_coor *c, t_win *win)
 
 void	isometric(t_coor *coor)
 {
-	t_coor prev;
+	t_coor	prev;
 
 	prev.x = coor->x;
 	prev.y = coor->y;
@@ -56,7 +56,7 @@ void	isometric(t_coor *coor)
 	coor->y = (prev.x + prev.y) * sin(M_PI / 6) - coor->z;
 }
 
-t_coor *setting_coordinate(t_coor *c, t_win *win)
+t_coor	*setting_coordinate(t_coor *c, t_win *win)
 {
 	c->x *= win->camera->zoom;
 	c->y *= win->camera->zoom;
@@ -72,21 +72,23 @@ t_coor *setting_coordinate(t_coor *c, t_win *win)
 	return (c);
 }
 
-int draw_map(t_win *win)
+int	draw_map(t_win *win)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
-	while (y < win->map->height){
+	while (y < win->map->height)
+	{
 		x = 0;
-		while (x < win->map->width){
+		while (x < win->map->width)
+		{
 			if (x < win->map->width - 1)
-				bresenham(setting_coordinate(init_coordinate(x, y, win), win), 
-						setting_coordinate(init_coordinate(x + 1, y, win), win), win);
+				bresenham(setting_coordinate(init_coor(x, y, win), win),
+					setting_coordinate(init_coor(x + 1, y, win), win), win);
 			if (y < win->map->height - 1)
-				bresenham(setting_coordinate(init_coordinate(x, y, win), win), 
-						setting_coordinate(init_coordinate(x, y + 1, win), win), win);
+				bresenham(setting_coordinate(init_coor(x, y, win), win),
+					setting_coordinate(init_coor(x, y + 1, win), win), win);
 			x++;
 		}
 		y++;
