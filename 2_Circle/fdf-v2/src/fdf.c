@@ -29,6 +29,5 @@ int main(int argc, char **argv)
 	}
 	else
 		usage();
-    map_free(&win);
 	return (0);
 }
