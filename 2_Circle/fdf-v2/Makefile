@@ -115,7 +115,7 @@ endif
 
 leak_check:	debug
 	@echo $(CYAN) "valgrind start"
-	valgrind --leak-check=full --log-file=memcheck.txt -v --error-limit=no ./test_shell/error_map.sh
+	valgrind --leak-check=full --log-file=memcheck.txt -v --error-limit=no ./fdf ./test_maps/error_maps/width_error.fdf
 	@echo $(END)
 
 all: $(NAME)
