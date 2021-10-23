@@ -19,6 +19,7 @@ int main(int argc, char **argv)
 	win.map = NULL;
 	if (argc == 2 && map_reader(argv[argc - 1], &win)){
 		win_init(&win, argv[argc - 1]);
+        printf("endian : %d\n", win.img->endian);
 		draw_map(&win);
 		mlx_hook(win.win_ptr, KEY_PRESS, KEY_PRESS_MASK, key_press_handler, &win);
 		mlx_hook(win.win_ptr, KEY_RELEASE, KEY_RELEASE_MASK, key_release_handler, &win);
