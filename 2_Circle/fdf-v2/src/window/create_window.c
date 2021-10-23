@@ -56,8 +56,6 @@ void	win_free(t_win *win)
 		mlx_destroy_image(win->mlx_ptr, win->img->img_ptr);
 	if (win->win_ptr)
 		mlx_destroy_window(win->mlx_ptr, win->win_ptr);
-	if (win->mlx_ptr)
-		mlx_destroy_display(win->mlx_ptr);
 	if (win->img)
 		free(win->img);
 	if (win->camera)
