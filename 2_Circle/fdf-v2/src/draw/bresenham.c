@@ -55,8 +55,6 @@ void	bresenham(t_coor *c1, t_coor *c2, t_win *win)
 	while (cur.x != c2->x || cur.y != c2->y)
 	{
         put_pixel(cur.x, cur.y, get_color(cur, c1, c2, delta), win);
-		// mlx_pixel_put(win->mlx_ptr, win->win_ptr, cur.x, cur.y,
-		// 	get_color(cur, c1, c2, delta));
 		err[1] = err[0] * 2;
 		if (err[1] < delta.x)
 		{

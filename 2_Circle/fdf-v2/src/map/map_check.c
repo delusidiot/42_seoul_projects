@@ -23,6 +23,26 @@ static int	map_init(t_win *win)
 	return (TRUE);
 }
 
+static int coordinate_check_error(char *err_msg, char *temp, char **z_info)
+{
+    int i;
+
+    i = -1;
+    while (z_info[++i])
+        free(z_info[i]);
+    free(temp);
+    put_error(err_msg);
+    return (FALSE);
+}
+
+static int map_check_error(char *err_msg, char **temp, char *line)
+{
+    free(temp);
+    free(line);
+    put_error(err_msg);
+    return (FALSE);
+}
+
 static int	coordinate_check(char *temp)
 {
 	int		i;
@@ -31,9 +51,9 @@ static int	coordinate_check(char *temp)
 	z_info = ft_split(temp, ',');
 	i = -1;
 	if (!is_number(z_info[0]))
-		return (put_error("is not number\n"));
+		return (coordinate_check_error("is not number\n", temp, z_info));
 	if (z_info[1] && !is_hex(z_info[1]))
-		return (put_error("is not hex\n"));
+		return (coordinate_check_error("is not hex\n", temp, z_info));
 	i = -1;
 	while (z_info[++i])
 		free(z_info[i]);
@@ -58,7 +78,7 @@ int	map_checker(char *filename, t_win *win)
 		temp = ft_split(line, ' ');
 		while (temp[++i])
 			if (!coordinate_check(temp[i]))
-				return (put_error("coordinate_check\n"));
+				return (map_check_error("coordinate_check\n", temp, line));
 		free(temp);
 		free(line);
 		if (win->map->width != -1 && i != win->map->width)
