@@ -93,7 +93,7 @@ int	draw_map(t_win *win)
 		}
 		y++;
 	}
-	// mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img->img_ptr, 0, 0);
+	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img->img_ptr, 0, 0);
 	print_control(win);
 	print_status(win);
 	return (0);
