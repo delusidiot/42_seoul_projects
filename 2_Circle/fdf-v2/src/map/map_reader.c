@@ -15,6 +15,7 @@
 static int	coordinate_insert(int i, char **temp, t_win *win)
 {
 	int		j;
+    int     k;
 	char	**z_info;
 
 	j = -1;
@@ -29,6 +30,9 @@ static int	coordinate_insert(int i, char **temp, t_win *win)
 		win->map->values[i][j].color = 0;
 		if (z_info[1])
 			win->map->values[i][j].color = hex_to_int(z_info[1]);
+        k = -1;
+        while (z_info[++k])
+		    free(z_info[k]);
 		free(temp[j]);
 	}
 	return (TRUE);
