@@ -77,5 +77,6 @@ int	mouse_move_handler(int x, int y, t_win *win)
 		mlx_clear_window(win->mlx_ptr, win->win_ptr);
 		draw_map(win);
 	}
+    mlx_clear_window(win->mlx_ptr, win->win_ptr);
 	return (0);
 }

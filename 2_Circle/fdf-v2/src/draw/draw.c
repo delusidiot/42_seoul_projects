@@ -12,6 +12,17 @@
 
 #include "fdf.h"
 
+static void clean_image(t_win *win)
+{
+    int     i;
+    char    *img;
+
+    i = -1;
+    img = win->img->data;
+    while (++i < WIN_WIDTH * WIN_HEIGHT)
+        img [i] = 0;
+}
+
 t_coor	*init_coor(int x, int y, t_win *win)
 {
 	t_coor	*coor;
@@ -78,6 +89,7 @@ int	draw_map(t_win *win)
 	int	y;
 
 	y = 0;
+    clean_image(win);
 	while (y < win->map->height)
 	{
 		x = 0;
