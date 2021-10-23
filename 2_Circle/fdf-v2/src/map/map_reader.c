@@ -60,6 +60,7 @@ static int	map_info_insert(char *filename, t_win *win)
 		i++;
 		free(temp);
 	}
+    free(line);
 	close(fd);
 	return (TRUE);
 }
