@@ -135,4 +135,10 @@
 # define KEY_DOWNARROW		  		(0X7D)
 # define KEY_UPARROW				(0X7E)
 
+# define MOUSE_BUTTON1				1
+# define MOUSE_BUTTON2				3
+# define MOUSE_BUTTON3				2
+# define MOUSE_UP_SCROLL			4
+# define MOUSE_DOWN_SCROLL			5
+
 #endif
