@@ -15,10 +15,10 @@
 static void clean_image(t_win *win)
 {
     int     i;
-    char    *img;
+    int    *img;
 
     i = -1;
-    img = win->img->data;
+    img = (int *)win->img->data;
     while (++i < WIN_WIDTH * WIN_HEIGHT)
         img [i] = 0;
 }
