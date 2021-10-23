@@ -23,16 +23,18 @@ static int	coordinate_insert(int i, char **temp, t_win *win)
 	{
 		z_info = ft_split(temp[j], ',');
 		win->map->values[i][j].z = ft_atoi(z_info[0]);
+        free(z_info[0]);
 		if (win->map->z_max < win->map->values[i][j].z)
 			win->map->z_max = win->map->values[i][j].z;
 		if (win->map->z_min > win->map->values[i][j].z)
 			win->map->z_min = win->map->values[i][j].z;
 		win->map->values[i][j].color = 0;
 		if (z_info[1])
+        {
 			win->map->values[i][j].color = hex_to_int(z_info[1]);
-        k = -1;
-        while (z_info[++k])
-		    free(z_info[k]);
+            free(z_info[1]);
+        }
+        free(z_info);
 		free(temp[j]);
 	}
 	return (TRUE);
@@ -55,10 +57,10 @@ static int	map_info_insert(char *filename, t_win *win)
 		if (!win->map->values[i])
 			return (FALSE);
 		temp = ft_split(line, ' ');
-		free(line);
 		coordinate_insert(i, temp, win);
+        free(temp);
+        free(line);
 		i++;
-		free(temp);
 	}
     free(line);
 	close(fd);
