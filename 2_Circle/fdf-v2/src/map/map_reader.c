@@ -68,5 +68,5 @@ int	map_reader(char *filename, t_win *win)
 		return (map_error(MAP_MAKE_ERROR, win));
 	if (!map_info_insert(filename, win))
 		return (map_error(MAP_INSERT_ERROR, win));
-	return (TRUE);
+	return (FALSE);
 }

@@ -28,8 +28,8 @@ static int coordinate_check_error(char *err_msg, char *temp, char **z_info)
     int i;
 
     i = -1;
-    while (z_info[++i])
-        free(z_info[i]);
+	while (z_info[++i])
+		free(z_info[i]);
     free(temp);
     put_error(err_msg);
     return (FALSE);
