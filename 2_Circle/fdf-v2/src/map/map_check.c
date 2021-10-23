@@ -31,13 +31,17 @@ static int coordinate_check_error(char *err_msg, char *temp, char **z_info)
 	while (z_info[++i])
 		free(z_info[i]);
 	free(z_info);
-	free(temp);
     put_error(err_msg);
     return (FALSE);
 }
 
 static int map_check_error(char *err_msg, char **temp, char *line)
 {
+    int i;
+
+	i = -1;
+	while (temp[++i])
+		free(temp[i]);
     free(temp);
     free(line);
     put_error(err_msg);
