@@ -30,9 +30,9 @@ static void	map_control_handler(int keycode, t_win *win)
 		win->camera->zoom += 1;
 	else if ((keycode == KEY_ANSI_N) && (win->camera->zoom > MIN_ZOOM))
 		win->camera->zoom -= 1;
-	else if ((keycode == KEY_ANSI_J) && (win->camera->z_magnify < MAX_Z))
+	else if ((win->camera->z_magnify < MAX_Z) && (keycode == KEY_ANSI_J))
 		win->camera->z_magnify += 1;
-	else if ((keycode == KEY_ANSI_K) && (win->camera->z_magnify > -MAX_Z))
+	else if ((win->camera->z_magnify > MIN_Z) && (keycode == KEY_ANSI_K))
 		win->camera->z_magnify -= 1;
 	else if ((keycode == KEY_ANSI_X) && !win->keyboard->flag_shift_pressed)
 		win->camera->alpha += 0.03;

@@ -10,19 +10,19 @@
 # include "mlx.h"
 # include "keys.h"
 
-# define FT_PI		3.14159265358979323846
-
-# define WIN_WIDTH 1280
-# define WIN_HEIGHT 720
-# define CONSOL_WIDTH 300
-# define MAX_ZOOM 100
-# define MIN_ZOOM 1
-# define MAX_Z		10
-# define MAX_COLOR_NUM 4
+# define WIN_WIDTH      1280
+# define WIN_HEIGHT     720
+# define CONSOL_WIDTH   300
+# define MAX_ZOOM       100
+# define MIN_ZOOM       1
+# define MAX_Z          10
+# define MIN_Z          -10
+# define MAX_COLOR_NUM  4
 
 /*
 ** error message
 */
+
 # define USAGE "./fdf fdf_file\n"
 # define MAP_MAKE_ERROR "map make error\n"
 # define MAP_INFO_ERROR "map information error\n"
