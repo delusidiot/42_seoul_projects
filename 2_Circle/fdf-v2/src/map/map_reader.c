@@ -15,7 +15,6 @@
 static int	coordinate_insert(int i, char **temp, t_win *win)
 {
 	int		j;
-    int     k;
 	char	**z_info;
 
 	j = -1;
