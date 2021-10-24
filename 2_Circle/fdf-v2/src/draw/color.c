@@ -6,7 +6,7 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 05:04:47 by jjeon             #+#    #+#             */
-/*   Updated: 2021/10/23 05:32:43 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/10/24 09:06:46 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	get_color(t_coor cur, t_coor *c1, t_coor *c2, t_coor delta)
 	return ((red << 16) | (green << 8) | blue);
 }
 
-int	get_z_color(t_coor *cur, t_win* win)
+int	get_z_color(t_coor *cur, t_win *win)
 {
 	double	ratio;
 	int		red;

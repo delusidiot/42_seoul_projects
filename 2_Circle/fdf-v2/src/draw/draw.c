@@ -6,22 +6,11 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 05:04:51 by jjeon             #+#    #+#             */
-/*   Updated: 2021/10/23 05:29:19 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/10/24 09:08:11 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-static void clean_image(t_win *win)
-{
-    int     i;
-    int    *img;
-
-    i = -1;
-    img = (int *)win->img->data;
-    while (++i < WIN_WIDTH * WIN_HEIGHT)
-        img [i] = 0;
-}
 
 t_coor	*init_coor(int x, int y, t_win *win)
 {
@@ -89,7 +78,7 @@ int	draw_map(t_win *win)
 	int	y;
 
 	y = 0;
-    clean_image(win);
+	clean_image(win);
 	while (y < win->map->height)
 	{
 		x = 0;
@@ -105,7 +94,8 @@ int	draw_map(t_win *win)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img->img_ptr, 0, 0);
+	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr,
+		win->img->img_ptr, 0, 0);
 	print_control(win);
 	print_status(win);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 05:04:43 by jjeon             #+#    #+#             */
-/*   Updated: 2021/10/23 05:31:46 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/10/24 09:02:57 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,12 @@ void	bresenham(t_coor *c1, t_coor *c2, t_win *win)
 	t_coor	cur;
 	int		err[2];
 
-	// (void)put_pixel;
 	init_delta_and_step(c1, c2, &delta, &step);
 	err[0] = delta.x - delta.y;
 	cur = *c1;
 	while (cur.x != c2->x || cur.y != c2->y)
 	{
-        put_pixel(cur.x, cur.y, get_color(cur, c1, c2, delta), win);
+		put_pixel(cur.x, cur.y, get_color(cur, c1, c2, delta), win);
 		err[1] = err[0] * 2;
 		if (err[1] < delta.x)
 		{

@@ -6,7 +6,7 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 05:05:07 by jjeon             #+#    #+#             */
-/*   Updated: 2021/10/23 05:17:52 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/10/24 09:08:53 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,29 +23,29 @@ static int	map_init(t_win *win)
 	return (TRUE);
 }
 
-static int coordinate_check_error(char *err_msg, char **z_info)
+static int	coordinate_check_error(char *err_msg, char **z_info)
 {
-    int i;
+	int	i;
 
 	i = -1;
 	while (z_info[++i])
 		free(z_info[i]);
 	free(z_info);
-    put_error(err_msg);
-    return (FALSE);
+	put_error(err_msg);
+	return (FALSE);
 }
 
-static int map_check_error(char *err_msg, char **temp, char *line)
+static int	map_check_error(char *err_msg, char **temp, char *line)
 {
-    int i;
+	int	i;
 
 	i = -1;
 	while (temp[++i])
 		free(temp[i]);
-    free(temp);
-    free(line);
-    put_error(err_msg);
-    return (FALSE);
+	free(temp);
+	free(line);
+	put_error(err_msg);
+	return (FALSE);
 }
 
 static int	coordinate_check(char *temp)

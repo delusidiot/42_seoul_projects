@@ -6,7 +6,7 @@
 #    By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/23 05:05:46 by jjeon             #+#    #+#              #
-#    Updated: 2021/10/23 05:05:48 by jjeon            ###   ########.fr        #
+#    Updated: 2021/10/24 09:19:52 by jjeon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,8 +49,9 @@ FILES =	map/map_reader.c \
 		draw/draw.c\
 		draw/bresenham.c\
 		draw/print_status.c\
-		draw/color.c
-		
+		draw/color.c\
+		draw/utils.c
+	
 MAIN_FILE = fdf.c
 BNS_FILE = fdf_bonus.c
 

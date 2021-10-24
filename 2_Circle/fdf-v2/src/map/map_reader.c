@@ -6,7 +6,7 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 05:04:33 by jjeon             #+#    #+#             */
-/*   Updated: 2021/10/23 05:15:06 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/10/24 09:00:27 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@ static int	coordinate_insert(int i, char **temp, t_win *win)
 	{
 		z_info = ft_split(temp[j], ',');
 		win->map->values[i][j].z = ft_atoi(z_info[0]);
-        free(z_info[0]);
+		free(z_info[0]);
 		if (win->map->z_max < win->map->values[i][j].z)
 			win->map->z_max = win->map->values[i][j].z;
 		if (win->map->z_min > win->map->values[i][j].z)
 			win->map->z_min = win->map->values[i][j].z;
 		win->map->values[i][j].color = 0;
 		if (z_info[1])
-        {
+		{
 			win->map->values[i][j].color = hex_to_int(z_info[1]);
-            free(z_info[1]);
-        }
-        free(z_info);
+			free(z_info[1]);
+		}
+		free(z_info);
 		free(temp[j]);
 	}
 	return (TRUE);
@@ -57,11 +57,11 @@ static int	map_info_insert(char *filename, t_win *win)
 			return (FALSE);
 		temp = ft_split(line, ' ');
 		coordinate_insert(i, temp, win);
-        free(temp);
-        free(line);
+		free(temp);
+		free(line);
 		i++;
 	}
-    free(line);
+	free(line);
 	close(fd);
 	return (TRUE);
 }
