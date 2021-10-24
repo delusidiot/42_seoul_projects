@@ -10,10 +10,10 @@ WHITE="\033[1;37m"
 echo -e $RED"#error Tester"$END
 
 echo -e $YELLOW"#file error"$END
-./fdf ./qwoierjxcv
+valgrind --leak-check=full --log-file=name_error.txt -v --error-limit=no ./fdf ./qwoierjxcv
 echo -e $YELLOW"#width error"$END
-./fdf ./test_maps/error_maps/width_error.fdf
+valgrind --leak-check=full --log-file=width_error.txt -v --error-limit=no ./fdf ./test_maps/error_maps/width_error.fdf
 echo -e $YELLOW"#width coordinate value error"$END
-./fdf ./test_maps/error_maps/width_coordinate_value_error.fdf
+valgrind --leak-check=full --log-file=coordinate_error.txt -v --error-limit=no ./fdf ./test_maps/error_maps/width_coordinate_value_error.fdf
 echo -e $YELLOW"#width color error"$END
-./fdf ./test_maps/error_maps/width_color_value_error.fdf
+valgrind --leak-check=full --log-file=color_error.txt -v --error-limit=no ./fdf ./test_maps/error_maps/width_color_value_error.fdf
