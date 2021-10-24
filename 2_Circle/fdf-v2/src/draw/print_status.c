@@ -84,7 +84,6 @@ void	print_status(t_win *win)
 {
 	int		x;
 	int		y;
-	char	buf[10];
 
 	x = 15;
 	y = 150;
