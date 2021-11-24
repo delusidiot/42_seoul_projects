@@ -48,7 +48,7 @@ typedef enum s_state
 	THINKING,
 	DIED,
 	COMPLETE,
-}			t_state;
+}	t_state;
 
 // number_of philosophers
 // time_to_die
@@ -57,15 +57,15 @@ typedef enum s_state
 //[number_of_times_each_philosopher_must_eat]
 typedef struct s_info
 {
-	int		num_of_philo;
-	int		time_to_die;
-	int		time_to_eat;
-	int		time_to_sleep;
-	int		must_eat;
-	int		count;
-	t_mutex	*fork;
-	t_mutex	print;
-	t_mutex meal;
+	int			num_of_philo;
+	int			time_to_die;
+	int			time_to_eat;
+	int			time_to_sleep;
+	int			must_eat;
+	int			count;
+	t_mutex		*fork;
+	t_mutex		print;
+	t_mutex		meal;
 	long long	start;
 }				t_info;
 
@@ -85,23 +85,23 @@ typedef struct s_philo
 ** information update
 */
 
-int	init_state(int argc, char **argv, t_info *info);
-int init_thread(t_info *info, t_philo **philo);
-int philo_atoi(char *str);
+int		init_state(int argc, char **argv, t_info *info);
+int		init_thread(t_info *info, t_philo **philo);
+int		philo_atoi(char *str);
 
 /*
 ** terminate
 */
 void	usage(void);
-int put_error(char *str);
-void destroy_mutex(t_info *info, t_philo *philo);
-int abnormal_terminate(t_info *info, t_philo *philo, char *str);
+int		put_error(char *str);
+void	destroy_mutex(t_info *info, t_philo *philo);
+int		abnormal_terminate(t_info *info, t_philo *philo, char *str);
 
 /*
 ** time
 */
-int timestamp(long long *time);
-void    wait_interval(t_philo *philo, long long start, long long interval);
+int		timestamp(long long *time);
+void	wait_interval(t_philo *philo, long long start, long long interval);
 
 /*
 ** state
@@ -111,13 +111,13 @@ void	put_fork(t_philo *philo);
 void	philo_eat(t_philo *philo);
 void	philo_sleep(t_philo *philo);
 void	philo_think(t_philo *philo);
-int	print_state(t_state state, t_philo *philo);
+int		print_state(t_state state, t_philo *philo);
 
 /*
 ** philo
 */
 
-void    active_philo(t_info *info, t_philo *philo);
+void	active_philo(t_info *info, t_philo *philo);
 
 
 #endif
