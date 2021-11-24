@@ -1,8 +1,21 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/11/25 05:13:11 by jjeon             #+#    #+#              #
+#    Updated: 2021/11/25 05:18:57 by jjeon            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME		=	philo
 LIBDIR		=	libft
 SRCPATH		=	src/
 OBJPATH		=	obj/
 HDRPATH 	=	include/
+LIBRARIES	=	$(LIBDIR)/libft.a
 
 LFLAGS		=	-L $(LIBDIR) -lft -lpthread
 IFLAGS		=	-I $(HDRPATH) -I $(LIBDIR)/include

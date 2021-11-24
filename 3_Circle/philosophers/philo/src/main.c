@@ -1,9 +1,21 @@
-# include "philo.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/25 05:12:47 by jjeon             #+#    #+#             */
+/*   Updated: 2021/11/25 05:15:07 by jjeon            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int main(int argc, char **argv)
+#include "philo.h"
+
+int	main(int argc, char **argv)
 {
-	t_info info;
-	t_philo *philo;
+	t_info	info;
+	t_philo	*philo;
 
 	philo = NULL;
 	if (init_state(argc, argv, &info))

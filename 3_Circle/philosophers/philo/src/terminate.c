@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   terminate.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/25 05:13:03 by jjeon             #+#    #+#             */
+/*   Updated: 2021/11/25 05:13:04 by jjeon            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 void	usage(void)
@@ -7,21 +19,21 @@ void	usage(void)
 	ft_putstr_fd("[number_of_times_each_philosopher_must_eat]\n", STDERR_FILENO);
 }
 
-int put_error(char *str)
+int	put_error(char *str)
 {
 	ft_putstr_fd(str, STDERR_FILENO);
 	return (FALSE);
 }
 
-int abnormal_terminate(t_info *info, t_philo *philo, char *str)
+int	abnormal_terminate(t_info *info, t_philo *philo, char *str)
 {
 	destroy_mutex(info, philo);
 	return (put_error(str));
 }
 
-void destroy_mutex(t_info *info, t_philo *philo)
+void	destroy_mutex(t_info *info, t_philo *philo)
 {
-	int i;
+	int	i;
 
 	if (info->fork)
 	{

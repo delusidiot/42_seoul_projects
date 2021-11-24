@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/25 05:12:54 by jjeon             #+#    #+#             */
+/*   Updated: 2021/11/25 05:12:55 by jjeon            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
-static void *monitor(void *ptr_philo)
+static void	*monitor(void *ptr_philo)
 {
-	long long current;
-	t_philo *philo;
+	long long	current;
+	t_philo		*philo;
 
 	philo = (t_philo *)ptr_philo;
 	if (!timestamp(&current))
@@ -22,9 +34,9 @@ static void *monitor(void *ptr_philo)
 	return (NULL);
 }
 
-static void *routine(void *ptr_philo)
+static void	*routine(void *ptr_philo)
 {
-	t_philo *philo;
+	t_philo	*philo;
 
 	philo = (t_philo *)ptr_philo;
 	if (!timestamp(&philo->current))
@@ -39,7 +51,7 @@ static void *routine(void *ptr_philo)
 		philo_sleep(philo);
 		philo_think(philo);
 	}
-	return NULL;
+	return (NULL);
 }
 
 void	active_philo(t_info *info, t_philo *philo)
@@ -63,6 +75,6 @@ void	active_philo(t_info *info, t_philo *philo)
 			pthread_detach(philo[i].monitor))
 			return ;
 	}
-	if(pthread_mutex_lock(&info->meal))
+	if (pthread_mutex_lock(&info->meal))
 		return ;
 }

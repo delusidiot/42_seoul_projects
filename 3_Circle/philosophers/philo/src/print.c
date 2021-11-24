@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/25 05:12:58 by jjeon             #+#    #+#             */
+/*   Updated: 2021/11/25 05:12:58 by jjeon            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
-static void print_msg(t_state state)
+static void	print_msg(t_state state)
 {
 	if (state == TAKEN)
 	{
@@ -31,10 +43,10 @@ static void print_msg(t_state state)
 
 int	print_state(t_state state, t_philo *philo)
 {
-	long long current;
+	long long	current;
 
-	if (pthread_mutex_lock(&philo->info->print) ||
-		!timestamp(&current))
+	if (pthread_mutex_lock(&philo->info->print)
+		|| !timestamp(&current))
 		return (FALSE);
 	ft_putnbr_fd(current - philo->info->start, STDOUT_FILENO);
 	if (state == COMPLETE)
