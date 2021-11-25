@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   state.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/26 06:05:22 by jjeon             #+#    #+#             */
+/*   Updated: 2021/11/26 06:05:25 by jjeon            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo_bonus.h"
 
 void	take_fork(t_info *info)
@@ -33,8 +45,8 @@ void	philo_sleep(t_info *info)
 	long long	cur;
 
 	cur = 0;
-	if (timestamp(&cur) == false || \
-		print_state(SLEEPING, info) == false)
+	if (timestamp(&cur) == false
+		|| print_state(SLEEPING, info) == false)
 		sem_post(info->sem_meal);
 	wait_interval(info, cur, info->time_to_sleep);
 }

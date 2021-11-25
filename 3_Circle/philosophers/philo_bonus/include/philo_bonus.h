@@ -53,7 +53,6 @@ typedef pthread_t		t_thread;
 # define PHILO_SEM_PRINT "/philo_sem_print"
 # define PHILO_SEM_FULL "/philo_sem_full"
 
-
 typedef enum s_state
 {
 	TAKEN,
@@ -92,27 +91,27 @@ typedef struct s_info
 /*
 ** information update
 */
-int	init_state(int argc, char **argv, t_info *info);
-int init_sem(t_info *info);
-int	sem_open_check(sem_t **sem, char *name, size_t size);
+int		init_state(int argc, char **argv, t_info *info);
+int		init_sem(t_info *info);
+int		sem_open_check(sem_t **sem, char *name, size_t size);
 
 /*
 ** terminate
 */
 void	usage(void);
-int put_error(char *str);
+int		put_error(char *str);
 void	kill_process(t_info *info);
 
 /*
 ** time
 */
-int	timestamp(long long *time);
+int		timestamp(long long *time);
 void	wait_interval(t_info *info, long long start, long long interval);
 
 /*
 ** state
 */
-int	print_state(t_state state, t_info *info);
+int		print_state(t_state state, t_info *info);
 void	take_fork(t_info *info);
 void	put_fork(t_info *info);
 void	philo_eat(t_info *info);
@@ -123,8 +122,7 @@ void	philo_think(t_info *info);
 ** philo
 */
 void	active_philo(t_info *info);
-int	philo_atoi(char *str);
-int	sem_open_check(sem_t **sem, char *name, size_t size);
-
+int		philo_atoi(char *str);
+int		sem_open_check(sem_t **sem, char *name, size_t size);
 
 #endif

@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/26 05:58:55 by jjeon             #+#    #+#             */
+/*   Updated: 2021/11/26 05:59:14 by jjeon            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo_bonus.h"
 
-static int check_arg(int argc, char **argv)
+static int	check_arg(int argc, char **argv)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (++i < argc)
@@ -20,7 +32,7 @@ static int check_arg(int argc, char **argv)
 	return (TRUE);
 }
 
-static int parsing_arg(int argc, char **argv, t_info *info)
+static int	parsing_arg(int argc, char **argv, t_info *info)
 {
 	info->num_of_philo = philo_atoi(argv[1]);
 	info->time_to_die = philo_atoi(argv[2]);
@@ -28,16 +40,16 @@ static int parsing_arg(int argc, char **argv, t_info *info)
 	info->time_to_sleep = philo_atoi(argv[4]);
 	if (argc == 6)
 		info->must_eat = philo_atoi(argv[5]);
-	if (info->num_of_philo == _ERROR || info->time_to_die == _ERROR ||
-		info->time_to_eat == _ERROR || info->time_to_sleep == _ERROR ||
-		info->must_eat == _ERROR)
+	if (info->num_of_philo == _ERROR || info->time_to_die == _ERROR
+		|| info->time_to_eat == _ERROR || info->time_to_sleep == _ERROR
+		|| info->must_eat == _ERROR)
 		return (put_error(CHECK_ARG_SIZE_ERROR));
 	return (TRUE);
 }
 
-static int check_state(int argc, t_info *info)
+static int	check_state(int argc, t_info *info)
 {
-	if (argc == 6 && info->must_eat <=0)
+	if (argc == 6 && info->must_eat <= 0)
 		return (put_error(MUST_EAT_ERROR));
 	if (info->num_of_philo < 0)
 		return (put_error(TIME_TO_DIE_ERROR));
@@ -64,7 +76,7 @@ int	init_state(int argc, char **argv, t_info *info)
 	return (TRUE);
 }
 
-int init_sem(t_info *info)
+int	init_sem(t_info *info)
 {
 	info->philo = ft_calloc(info->num_of_philo, sizeof(t_philo));
 	if (!(info->philo))
