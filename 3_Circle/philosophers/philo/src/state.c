@@ -14,24 +14,24 @@
 
 void	take_fork(t_philo *philo)
 {
-	if (pthread_mutex_lock(&philo->info->fork[philo->l]) || \
-		print_state(TAKEN, philo) == false || \
-		pthread_mutex_lock(&philo->info->fork[philo->r]) || \
-		print_state(TAKEN, philo) == false)
+	if (pthread_mutex_lock(&philo->info->fork[philo->l])
+		|| print_state(TAKEN, philo) == false
+		|| pthread_mutex_lock(&philo->info->fork[philo->r])
+		|| print_state(TAKEN, philo) == false)
 		pthread_mutex_unlock(&philo->info->meal);
 }
 
-void	put_fork(t_philo *philo)
+void	put_fork_down(t_philo *philo)
 {
-	if (pthread_mutex_unlock(&philo->info->fork[philo->l]) || \
-		pthread_mutex_unlock(&philo->info->fork[philo->r]))
+	if (pthread_mutex_unlock(&philo->info->fork[philo->l])
+		|| pthread_mutex_unlock(&philo->info->fork[philo->r]))
 		pthread_mutex_unlock(&philo->info->meal);
 }
 
 void	philo_eat(t_philo *philo)
 {
-	if (timestamp(&(philo->current)) == false || \
-		print_state(EATING, philo) == false)
+	if (timestamp(&(philo->current)) == false
+		|| print_state(EATING, philo) == false)
 		pthread_mutex_unlock(&philo->info->meal);
 	wait_interval(philo, philo->current, philo->info->time_to_eat);
 	++(philo->count);
@@ -49,8 +49,8 @@ void	philo_sleep(t_philo *philo)
 	long long	cur;
 
 	cur = 0;
-	if (timestamp(&cur) == false || \
-		print_state(SLEEPING, philo) == false)
+	if (timestamp(&cur) == false
+		|| print_state(SLEEPING, philo) == false)
 		pthread_mutex_unlock(&philo->info->meal);
 	wait_interval(philo, cur, philo->info->time_to_sleep);
 }

@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 05:13:08 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/25 05:13:09 by jjeon            ###   ########.fr       */
+/*   Created: 2020/12/21 21:36:40 by jjeon             #+#    #+#             */
+/*   Updated: 2021/07/01 14:29:36 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "libft.h"
 
-int	philo_atoi(char *str)
+int	ft_isprint(int c)
 {
-	long	deca;
-	int		i;
-
-	i = -1;
-	deca = 0;
-	while (str[++i])
-		deca += (str[i] - '0') + deca * 10;
-	if (deca > 2147483647)
-		return (_ERROR);
-	return ((int)deca);
+	return (c >= 040 && c <= 0176);
 }

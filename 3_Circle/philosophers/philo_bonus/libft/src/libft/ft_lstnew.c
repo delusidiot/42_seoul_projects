@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 05:13:08 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/25 05:13:09 by jjeon            ###   ########.fr       */
+/*   Created: 2020/12/23 01:50:26 by jjeon             #+#    #+#             */
+/*   Updated: 2021/07/01 14:27:24 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "libft.h"
 
-int	philo_atoi(char *str)
+t_list	*ft_lstnew(void *content)
 {
-	long	deca;
-	int		i;
+	t_list	*elem;
 
-	i = -1;
-	deca = 0;
-	while (str[++i])
-		deca += (str[i] - '0') + deca * 10;
-	if (deca > 2147483647)
-		return (_ERROR);
-	return ((int)deca);
+	elem = malloc(sizeof(t_list));
+	if (!elem)
+		return (NULL);
+	elem->content = content;
+	elem->next = NULL;
+	return (elem);
 }

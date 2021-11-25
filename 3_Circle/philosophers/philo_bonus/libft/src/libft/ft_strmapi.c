@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 05:13:08 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/25 05:13:09 by jjeon            ###   ########.fr       */
+/*   Created: 2020/12/22 19:19:54 by jjeon             #+#    #+#             */
+/*   Updated: 2021/07/01 14:17:29 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "libft.h"
 
-int	philo_atoi(char *str)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	long	deca;
-	int		i;
+	char			*rst;
+	size_t			len;
+	unsigned int	i;
 
-	i = -1;
-	deca = 0;
-	while (str[++i])
-		deca += (str[i] - '0') + deca * 10;
-	if (deca > 2147483647)
-		return (_ERROR);
-	return ((int)deca);
+	if (s == NULL || f == NULL)
+		return (NULL);
+	len = ft_strlen(s);
+	rst = (char *)malloc(sizeof(char) * (len + 1));
+	if (!rst)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		rst[i] = f(i, s[i]);
+		i++;
+	}
+	rst[i] = 0;
+	return (rst);
 }

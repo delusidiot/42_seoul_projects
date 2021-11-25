@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 05:13:08 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/25 05:13:09 by jjeon            ###   ########.fr       */
+/*   Created: 2020/12/22 17:47:13 by jjeon             #+#    #+#             */
+/*   Updated: 2021/07/01 14:18:51 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "libft.h"
 
-int	philo_atoi(char *str)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	long	deca;
-	int		i;
+	size_t	s1_len;
+	size_t	s2_len;
+	char	*rst;
 
-	i = -1;
-	deca = 0;
-	while (str[++i])
-		deca += (str[i] - '0') + deca * 10;
-	if (deca > 2147483647)
-		return (_ERROR);
-	return ((int)deca);
+	s1_len = 0;
+	s2_len = 0;
+	if (s1)
+		s1_len = ft_strlen(s1);
+	if (s2)
+		s2_len = ft_strlen(s2);
+	rst = malloc(sizeof(char) * (s1_len + s2_len + 1));
+	if (!rst)
+		return (NULL);
+	ft_memcpy(rst, s1, s1_len);
+	ft_memcpy(rst + s1_len, s2, s2_len);
+	rst[s1_len + s2_len] = 0;
+	return (rst);
 }

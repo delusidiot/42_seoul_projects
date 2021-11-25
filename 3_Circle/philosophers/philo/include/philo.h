@@ -45,7 +45,7 @@ typedef pthread_mutex_t	t_mutex;
 /*
 ** Message
 */
-# define COMPLETE_MSG "\tDining Philosophers simulation complete!"
+# define COMPLETE_MSG "Dining Philosophers simulation complete!"
 # define TAKEN_MSG " has taken a fork"
 # define EATING_MSG " is eating"
 # define SLEEPING_MSG " is sleeping"
@@ -62,11 +62,6 @@ typedef enum s_state
 	COMPLETE,
 }	t_state;
 
-// number_of philosophers
-// time_to_die
-// time_to_eat
-// time_to_sleep
-//[number_of_times_each_philosopher_must_eat]
 typedef struct s_info
 {
 	int			num_of_philo;
@@ -119,7 +114,7 @@ void	wait_interval(t_philo *philo, long long start, long long interval);
 ** state
 */
 void	take_fork(t_philo *philo);
-void	put_fork(t_philo *philo);
+void	put_fork_down(t_philo *philo);
 void	philo_eat(t_philo *philo);
 void	philo_sleep(t_philo *philo);
 void	philo_think(t_philo *philo);

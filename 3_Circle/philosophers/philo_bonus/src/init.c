@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "philo_bonus.h"
 
 static int check_arg(int argc, char **argv)
 {
@@ -52,6 +52,7 @@ static int check_state(int argc, t_info *info)
 
 int	init_state(int argc, char **argv, t_info *info)
 {
+	info->philo = NULL;
 	if (!(argc == 5 || argc == 6))
 		return (put_error(ARG_NOT_CORRECT_ERROR));
 	if (!check_arg(argc, argv))
@@ -63,22 +64,15 @@ int	init_state(int argc, char **argv, t_info *info)
 	return (TRUE);
 }
 
-int init_thread(t_info *info, t_philo **philo)
+int init_sem(t_info *info)
 {
-	int	i;
-
-	i = -1;
-	info->fork = ft_calloc(info->num_of_philo, sizeof(t_mutex));
-	if (!info->fork)
+	info->philo = ft_calloc(info->num_of_philo, sizeof(t_philo));
+	if (!(info->philo))
 		return (put_error(MEMORY_ALLOC_ERROR));
-	*philo = ft_calloc(info->num_of_philo, sizeof(t_philo));
-	if (!(*philo))
-		return (put_error(MEMORY_ALLOC_ERROR));
-	while (++i < info->num_of_philo)
-		if (pthread_mutex_init(&info->fork[i], NULL))
-			return (put_error(MUTEX_INIT_ERROR));
-	if (pthread_mutex_init(&info->meal, NULL) ||
-		pthread_mutex_init(&info->print, NULL))
-		return (put_error(MUTEX_INIT_ERROR));
+	if (!sem_open_check(&info->sem_meal, PHILO_SEM_MEAL, 0)
+		|| !sem_open_check(&info->sem_fork, PHILO_SEM_FORK, info->num_of_philo)
+		|| !sem_open_check(&info->sem_print, PHILO_SEM_PRINT, 1)
+		|| !sem_open_check(&info->sem_full, PHILO_SEM_FULL, 0))
+		return (put_error(SEMAPHORE_INIT_ERROR));
 	return (TRUE);
 }

@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 05:13:08 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/25 05:13:09 by jjeon            ###   ########.fr       */
+/*   Created: 2020/12/22 07:16:45 by jjeon             #+#    #+#             */
+/*   Updated: 2021/07/01 14:14:54 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "libft.h"
 
-int	philo_atoi(char *str)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	long	deca;
-	int		i;
+	char	*rst;
 
-	i = -1;
-	deca = 0;
-	while (str[++i])
-		deca += (str[i] - '0') + deca * 10;
-	if (deca > 2147483647)
-		return (_ERROR);
-	return ((int)deca);
+	if (!s)
+		return (NULL);
+	rst = (char *)malloc(sizeof(char) * (len + 1));
+	if (!rst)
+		return (NULL);
+	if (ft_strlen(s) <= start)
+		start = ft_strlen(s);
+	ft_strlcpy(rst, s + start, len + 1);
+	return (rst);
 }

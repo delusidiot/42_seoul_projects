@@ -1,13 +1,16 @@
-# include "philo.h"
+# include "philo_bonus.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_info info;
-	t_philo *philo;
+	t_info	info;
 
-	philo = NULL;
-	if (init_state(argc, argv, &info) && init_thread(&info, &philo))
-		active_philo(&info, philo);
+	if (init_state(argc, argv, &info))
+	{
+		if (!init_sem(&info))
+			return (0);
+		active_philo(&info);
+		kill_process(&info);
+	}
 	else
 		usage();
 	return (0);

@@ -49,6 +49,7 @@ int	print_state(t_state state, t_philo *philo)
 		|| !timestamp(&current))
 		return (FALSE);
 	ft_putnbr_fd(current - philo->info->start, STDOUT_FILENO);
+	ft_putstr_fd("\t", STDOUT_FILENO);
 	if (state == COMPLETE)
 	{
 		ft_putstr_fd(BWHT, STDOUT_FILENO);
@@ -56,7 +57,6 @@ int	print_state(t_state state, t_philo *philo)
 	}
 	else
 	{
-		ft_putstr_fd("\t", STDOUT_FILENO);
 		ft_putstr_fd(BWHT, STDOUT_FILENO);
 		ft_putnbr_fd(philo->index + 1, STDOUT_FILENO);
 		print_msg(state);

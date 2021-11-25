@@ -47,7 +47,7 @@ static void	*routine(void *ptr_philo)
 	{
 		take_fork(philo);
 		philo_eat(philo);
-		put_fork(philo);
+		put_fork_down(philo);
 		philo_sleep(philo);
 		philo_think(philo);
 	}
@@ -59,8 +59,8 @@ void	active_philo(t_info *info, t_philo *philo)
 	int	 i;
 
 	i = -1;
-	if (pthread_mutex_lock(&info->meal) || \
-		timestamp(&info->start) == FALSE)
+	if (pthread_mutex_lock(&info->meal)
+		|| timestamp(&info->start) == FALSE)
 		return ;
 	while (++i < info->num_of_philo)
 	{
@@ -68,11 +68,11 @@ void	active_philo(t_info *info, t_philo *philo)
 		philo[i].info = info;
 		philo[i].l = i;
 		philo[i].r = (i + 1) % info->num_of_philo;
-		if (pthread_create(&philo[i].routine, NULL, routine, &philo[i]) || \
-			pthread_detach(philo[i].routine))
+		if (pthread_create(&philo[i].routine, NULL, routine, &philo[i])
+			|| pthread_detach(philo[i].routine))
 			return ;
-		if (pthread_create(&philo[i].monitor, NULL, monitor, &philo[i]) || \
-			pthread_detach(philo[i].monitor))
+		if (pthread_create(&philo[i].monitor, NULL, monitor, &philo[i])
+			|| pthread_detach(philo[i].monitor))
 			return ;
 	}
 	if (pthread_mutex_lock(&info->meal))

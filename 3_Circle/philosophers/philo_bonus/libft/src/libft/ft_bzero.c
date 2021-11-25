@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jjeon <jjeon@student.seoul42.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 05:13:08 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/25 05:13:09 by jjeon            ###   ########.fr       */
+/*   Created: 2020/12/21 11:13:44 by jjeon             #+#    #+#             */
+/*   Updated: 2021/01/11 10:39:29 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "libft.h"
 
-int	philo_atoi(char *str)
+void	ft_bzero(void *s, size_t n)
 {
-	long	deca;
-	int		i;
+	unsigned char	*dest;
+	size_t			i;
 
-	i = -1;
-	deca = 0;
-	while (str[++i])
-		deca += (str[i] - '0') + deca * 10;
-	if (deca > 2147483647)
-		return (_ERROR);
-	return ((int)deca);
+	dest = (unsigned char *)s;
+	i = 0;
+	while (i++ < n)
+		*dest++ = 0;
 }

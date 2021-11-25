@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 05:13:08 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/25 05:13:09 by jjeon            ###   ########.fr       */
+/*   Created: 2020/12/23 07:32:31 by jjeon             #+#    #+#             */
+/*   Updated: 2021/06/29 18:29:36 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	philo_atoi(char *str)
-{
-	long	deca;
-	int		i;
+# include <unistd.h>
+# include <stdlib.h>
+# include "libft.h"
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5000
+# endif
+# define _EOF 0
+# define _ERROR -1
+# define _SUCCESS 1
+# define FILE_MAX 256
 
-	i = -1;
-	deca = 0;
-	while (str[++i])
-		deca += (str[i] - '0') + deca * 10;
-	if (deca > 2147483647)
-		return (_ERROR);
-	return ((int)deca);
-}
+int		get_next_line(int fd, char **line);
+char	*ft_strndup(const char *str, size_t size);
+
+#endif

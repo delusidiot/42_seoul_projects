@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jjeon <jjeon@student.seoul42.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 05:13:08 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/25 05:13:09 by jjeon            ###   ########.fr       */
+/*   Created: 2020/12/21 11:59:11 by jjeon             #+#    #+#             */
+/*   Updated: 2021/07/01 14:26:41 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "libft.h"
 
-int	philo_atoi(char *str)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	long	deca;
-	int		i;
+	unsigned char	*p_s;
 
-	i = -1;
-	deca = 0;
-	while (str[++i])
-		deca += (str[i] - '0') + deca * 10;
-	if (deca > 2147483647)
-		return (_ERROR);
-	return ((int)deca);
+	p_s = (unsigned char *)s;
+	while (n--)
+	{
+		if (*p_s == (unsigned char)c)
+			return ((void *)(p_s));
+		p_s++;
+	}
+	return (NULL);
 }

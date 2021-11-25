@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 05:13:08 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/25 05:13:09 by jjeon            ###   ########.fr       */
+/*   Created: 2020/12/23 11:25:26 by jjeon             #+#    #+#             */
+/*   Updated: 2021/07/15 16:53:00 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "get_next_line.h"
 
-int	philo_atoi(char *str)
+char	*ft_strndup(const char *str, size_t size)
 {
-	long	deca;
-	int		i;
+	char	*rst;
 
-	i = -1;
-	deca = 0;
-	while (str[++i])
-		deca += (str[i] - '0') + deca * 10;
-	if (deca > 2147483647)
-		return (_ERROR);
-	return ((int)deca);
+	rst = malloc(sizeof(char) * (size + 1));
+	if (!rst)
+		return (NULL);
+	rst[size] = '\0';
+	while (size > 0)
+	{
+		rst[size - 1] = str[size - 1];
+		size--;
+	}
+	return (rst);
 }
