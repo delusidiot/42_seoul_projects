@@ -82,7 +82,6 @@ void	active_philo(t_info *info)
 	while (++i < info->num_of_philo)
 	{
 		info->index = i;
-		printf("process index : %d\n",i);
 		info->philo[i].pid = fork();
 		if (info->philo[i].pid == _ERROR)
 			return ;
