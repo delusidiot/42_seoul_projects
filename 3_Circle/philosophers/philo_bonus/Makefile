@@ -6,11 +6,11 @@
 #    By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/26 07:18:50 by jjeon             #+#    #+#              #
-#    Updated: 2021/11/26 07:18:57 by jjeon            ###   ########.fr        #
+#    Updated: 2021/11/26 14:22:30 by jjeon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	philo
+NAME		=	philo_bonus
 LIBDIR		=	libft
 SRCPATH		=	src/
 OBJPATH		=	obj/

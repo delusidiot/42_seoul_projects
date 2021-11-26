@@ -6,7 +6,7 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 06:02:31 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/26 06:04:18 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/11/26 16:47:45 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	*routine(t_info *info)
 		sem_post(info->sem_meal);
 	if (info->index % 2)
 		wait_interval(info, info->philo[info->index].current, 100);
-	while (1)
+	while (TRUE)
 	{
 		take_fork(info);
 		philo_eat(info);
@@ -82,6 +82,7 @@ void	active_philo(t_info *info)
 	while (++i < info->num_of_philo)
 	{
 		info->index = i;
+		printf("process index : %d\n",i);
 		info->philo[i].pid = fork();
 		if (info->philo[i].pid == _ERROR)
 			return ;

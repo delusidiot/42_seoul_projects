@@ -6,7 +6,7 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 06:05:22 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/26 06:05:25 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/11/26 15:44:43 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	philo_eat(t_info *info)
 		sem_post(info->sem_meal);
 	wait_interval(info, info->philo[info->index].current, info->time_to_eat);
 	++(info->philo[info->index].count);
-	if (info->philo[info->index].count == info->num_of_philo)
+	if (info->philo[info->index].count == info->must_eat)
 		if (sem_post(info->sem_full) == _ERROR)
 			sem_post(info->sem_meal);
 }
