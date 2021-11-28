@@ -29,7 +29,7 @@ case $yn in
 esac
 
 # infinity
-echo -e $GREEN"./philo 4 410 200 200"$END
+echo -e $GREEN"./philo 5 800 200 200"$END
 read -p "start this?(yn)" yn
 case $yn in
 	[Yy]* )./philo 4 410 200 200;;
