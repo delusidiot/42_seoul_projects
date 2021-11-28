@@ -6,7 +6,7 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 05:12:31 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/25 05:12:38 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/11/27 07:56:45 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int		philo_atoi(char *str);
 void	usage(void);
 int		put_error(char *str);
 void	destroy_mutex(t_info *info, t_philo *philo);
-int		abnormal_terminate(t_info *info, t_philo *philo, char *str);
+int		abnormal_exit(t_info *info, t_philo *philo, char *str);
 
 /*
 ** time

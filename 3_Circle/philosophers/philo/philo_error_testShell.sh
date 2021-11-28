@@ -35,7 +35,7 @@ case $yn in
 	* ) echo "Please answer y or n.";;
 esac
 
-echo -e $GREEN"./philo 2000000000000 310 200 100"$END
+echo -e $GREEN"./philo 3000000000 310 200 100"$END
 read -p "start this?(yn)" yn
 case $yn in
 	[Yy]* )./philo 2000000000000 310 200 100;;

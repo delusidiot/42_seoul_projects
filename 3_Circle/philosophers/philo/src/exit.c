@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   terminate.c                                        :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 05:13:03 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/26 06:11:37 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/11/28 08:57:14 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	put_error(char *str)
 	return (FALSE);
 }
 
-int	abnormal_terminate(t_info *info, t_philo *philo, char *str)
+int	abnormal_exit(t_info *info, t_philo *philo, char *str)
 {
 	destroy_mutex(info, philo);
 	return (put_error(str));

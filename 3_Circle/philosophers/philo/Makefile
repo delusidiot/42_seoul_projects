@@ -6,7 +6,7 @@
 #    By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/25 05:13:11 by jjeon             #+#    #+#              #
-#    Updated: 2021/11/25 05:18:57 by jjeon            ###   ########.fr        #
+#    Updated: 2021/11/27 07:57:05 by jjeon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,12 @@ LFLAGS		=	-L $(LIBDIR) -lft -lpthread
 IFLAGS		=	-I $(HDRPATH) -I $(LIBDIR)/include
 CFLAGS		=	-Wall -Wextra -Werror $(IFLAGS)
 
-FILES		=	init.c\
+FILES		=	exit.c\
+				init.c\
 				main.c\
 				philo.c\
 				print.c\
 				state.c\
-				terminate.c\
 				time.c\
 				utils.c
 

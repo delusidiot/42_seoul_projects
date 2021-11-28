@@ -6,7 +6,7 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 05:12:41 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/26 06:11:23 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/11/27 08:00:46 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,16 +83,22 @@ int	init_thread(t_info *info, t_philo **philo)
 	i = -1;
 	info->fork = ft_calloc(info->num_of_philo, sizeof(t_mutex));
 	if (!info->fork)
-		return (abnormal_terminate(info, *philo, MEMORY_ALLOC_ERROR));
+		return (abnormal_exit(info, *philo, MEMORY_ALLOC_ERROR));
 	*philo = ft_calloc(info->num_of_philo, sizeof(t_philo));
 	if (!(*philo))
-		return (abnormal_terminate(info, *philo, MEMORY_ALLOC_ERROR));
+		return (abnormal_exit(info, *philo, MEMORY_ALLOC_ERROR));
 	while (++i < info->num_of_philo)
+	{
+		(*philo)[i].index = i;
+		(*philo)[i].info = info;
+		(*philo)[i].l = i;
+		(*philo)[i].r = (i + 1) % info->num_of_philo;
 		if (pthread_mutex_init(&info->fork[i], NULL))
-			return (abnormal_terminate(info, *philo, MUTEX_INIT_ERROR));
+			return (abnormal_exit(info, *philo, MUTEX_INIT_ERROR));
+	}
 	if (pthread_mutex_init(&info->meal, NULL))
-		return (abnormal_terminate(info, *philo, MUTEX_INIT_ERROR));
+		return (abnormal_exit(info, *philo, MUTEX_INIT_ERROR));
 	if (pthread_mutex_init(&info->print, NULL))
-		return (abnormal_terminate(info, *philo, MUTEX_INIT_ERROR));
+		return (abnormal_exit(info, *philo, MUTEX_INIT_ERROR));
 	return (TRUE);
 }

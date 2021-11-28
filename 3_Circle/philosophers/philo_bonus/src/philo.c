@@ -6,13 +6,13 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 06:02:31 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/26 16:47:45 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/11/28 09:53:51 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-void	*monitor(void *info_ptr)
+void	*monitor_complete(void *info_ptr)
 {
 	int		count;
 	t_info	*info;
@@ -57,7 +57,7 @@ void	*monitor_died(void *info_ptr)
 
 void	*routine(t_info *info)
 {
-	if (timestamp(&info->philo[info->index].current) == false)
+	if (!timestamp(&info->philo[info->index].current))
 		sem_post(info->sem_meal);
 	if (info->index % 2)
 		wait_interval(info, info->philo[info->index].current, 100);
@@ -76,7 +76,7 @@ void	active_philo(t_info *info)
 	int	 i;
 
 	i = -1;
-	if (pthread_create(&info->thread, NULL, monitor, (void *)info)
+	if (pthread_create(&info->thread, NULL, monitor_complete, (void *)info)
 		|| pthread_detach(info->thread) || !timestamp(&info->start))
 		return ;
 	while (++i < info->num_of_philo)

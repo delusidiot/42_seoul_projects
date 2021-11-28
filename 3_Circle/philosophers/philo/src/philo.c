@@ -6,7 +6,7 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 05:12:54 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/26 06:11:30 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/11/27 08:00:51 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,6 @@ void	active_philo(t_info *info, t_philo *philo)
 		return ;
 	while (++i < info->num_of_philo)
 	{
-		philo[i].index = i;
-		philo[i].info = info;
-		philo[i].l = i;
-		philo[i].r = (i + 1) % info->num_of_philo;
 		if (pthread_create(&philo[i].routine, NULL, routine, &philo[i])
 			|| pthread_detach(philo[i].routine))
 			return ;
