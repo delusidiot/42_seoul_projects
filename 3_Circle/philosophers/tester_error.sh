@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 END="\033[0;0m"
 RED="\033[1;31m"
@@ -28,10 +28,8 @@ if [ "$2" -gt 2 -o "$2" -lt 1 ]; then
 	echo "[Error]: Wrong Arguments"
 	exit
 fi
-		
 
 echo -e $CYAN"Start Tester!"$END
-# short case
 echo -e $GREEN"$target 2 2 2"$END
 read -p "start this?(yn)" yn
 case $yn in

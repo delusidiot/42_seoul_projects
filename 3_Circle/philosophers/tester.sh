@@ -23,7 +23,7 @@ echo "[+] Test Type: $2\e[0m\n"
 echo "\e[94m[+] In Case of a failed test, please check ./errors_log file for more information\e[0m\n"
 
 error_log ()
-
+{
     echo "[$1-$2]: $3" >> ./errors_log
 }
 

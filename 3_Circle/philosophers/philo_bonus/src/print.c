@@ -6,7 +6,7 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 08:36:48 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/27 08:36:49 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/11/28 21:54:32 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static void	print_messsge(t_state state)
 		ft_putendl_fd(DIED_MSG, STDOUT_FILENO);
 	}
 }
+
 int	print_state(t_state state, t_info *info)
 {
 	long long	current;
