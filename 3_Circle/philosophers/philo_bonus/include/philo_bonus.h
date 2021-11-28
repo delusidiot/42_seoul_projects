@@ -49,12 +49,12 @@ typedef pthread_t		t_thread;
 /*
 ** Message
 */
-# define COMPLETE_MSG "Dining Philosophers simulation complete!"
-# define TAKEN_MSG " has taken a fork"
-# define EATING_MSG " is eating"
-# define SLEEPING_MSG " is sleeping"
-# define THINKING_MSG " is thinking"
-# define DIED_MSG " died"
+# define COMPLETE_MSG	"Complete the Dining Philosopher simulation"
+# define TAKEN_MSG		" has taken a fork"
+# define EATING_MSG		" is eating"
+# define SLEEPING_MSG	" is sleeping"
+# define THINKING_MSG	" is thinking"
+# define DIED_MSG		" died"
 
 /*
 ** file name
@@ -108,7 +108,7 @@ int		init_sem(t_info *info);
 int		sem_open_check(sem_t **sem, char *name, size_t size);
 
 /*
-** terminate
+** exit
 */
 void	usage(void);
 int		put_error(char *str);
@@ -125,7 +125,7 @@ void	wait_time(t_info *info, long long start, long long interval);
 */
 int		print_state(t_state state, t_info *info);
 void	take_fork(t_info *info);
-void	put_fork(t_info *info);
+void	put_fork_down(t_info *info);
 void	philo_eat(t_info *info);
 void	philo_sleep(t_info *info);
 void	philo_think(t_info *info);

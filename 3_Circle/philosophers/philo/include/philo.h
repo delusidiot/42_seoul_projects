@@ -45,12 +45,12 @@ typedef pthread_mutex_t	t_mutex;
 /*
 ** Message
 */
-# define COMPLETE_MSG "Dining Philosophers simulation complete!"
-# define TAKEN_MSG " has taken a fork"
-# define EATING_MSG " is eating"
-# define SLEEPING_MSG " is sleeping"
-# define THINKING_MSG " is thinking"
-# define DIED_MSG " died"
+# define COMPLETE_MSG	"Complete the Dining Philosopher simulation"
+# define TAKEN_MSG		" has taken a fork"
+# define EATING_MSG		" is eating"
+# define SLEEPING_MSG	" is sleeping"
+# define THINKING_MSG	" is thinking"
+# define DIED_MSG		" died"
 
 typedef enum s_state
 {
@@ -97,7 +97,7 @@ int		init_thread(t_info *info, t_philo **philo);
 int		philo_atoi(char *str);
 
 /*
-** terminate
+** exit
 */
 void	usage(void);
 int		put_error(char *str);

@@ -65,7 +65,7 @@ void	*routine(t_info *info)
 	{
 		take_fork(info);
 		philo_eat(info);
-		put_fork(info);
+		put_fork_down(info);
 		philo_sleep(info);
 		philo_think(info);
 	}

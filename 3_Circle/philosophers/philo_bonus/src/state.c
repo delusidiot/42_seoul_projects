@@ -21,7 +21,7 @@ void	take_fork(t_info *info)
 		sem_post(info->sem_meal);
 }
 
-void	put_fork(t_info *info)
+void	put_fork_down(t_info *info)
 {
 	if (sem_post(info->sem_fork) == _ERROR
 		|| sem_post(info->sem_fork) == _ERROR)
@@ -34,7 +34,7 @@ void	philo_eat(t_info *info)
 		|| !print_state(EATING, info))
 		sem_post(info->sem_meal);
 	wait_time(info, info->philo[info->index].current, info->time_to_eat);
-	++(info->philo[info->index].count);
+	info->philo[info->index].count++;
 	if (info->philo[info->index].count == info->must_eat)
 		if (sem_post(info->sem_full) == _ERROR)
 			sem_post(info->sem_meal);

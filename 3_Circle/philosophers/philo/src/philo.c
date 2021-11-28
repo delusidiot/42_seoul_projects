@@ -60,7 +60,7 @@ void	active_philo(t_info *info, t_philo *philo)
 
 	i = -1;
 	if (pthread_mutex_lock(&info->meal)
-		|| timestamp(&info->start) == FALSE)
+		|| !timestamp(&info->start))
 		return ;
 	while (++i < info->num_of_philo)
 	{

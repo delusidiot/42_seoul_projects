@@ -34,10 +34,10 @@ void	philo_eat(t_philo *philo)
 		|| !print_state(EATING, philo))
 		pthread_mutex_unlock(&philo->info->meal);
 	wait_time(philo, philo->current, philo->info->time_to_eat);
-	++(philo->count);
+	philo->count++;
 	if (philo->count == philo->info->must_eat)
 	{
-		++(philo->info->count);
+		philo->info->count++;
 		if (philo->info->count >= philo->info->num_of_philo)
 			if (!print_state(COMPLETE, philo))
 				pthread_mutex_unlock(&philo->info->meal);
