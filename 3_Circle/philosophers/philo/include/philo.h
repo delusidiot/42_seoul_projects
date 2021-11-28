@@ -6,7 +6,7 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 05:12:31 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/27 07:56:45 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/11/28 11:18:26 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int		abnormal_exit(t_info *info, t_philo *philo, char *str);
 ** time
 */
 int		timestamp(long long *time);
-void	wait_interval(t_philo *philo, long long start, long long interval);
+void	wait_time(t_philo *philo, long long start, long long interval);
 
 /*
 ** state

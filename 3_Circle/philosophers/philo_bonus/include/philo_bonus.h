@@ -6,7 +6,7 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 08:37:16 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/27 08:37:17 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/11/28 11:16:58 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void	kill_process(t_info *info);
 ** time
 */
 int		timestamp(long long *time);
-void	wait_interval(t_info *info, long long start, long long interval);
+void	wait_time(t_info *info, long long start, long long interval);
 
 /*
 ** state

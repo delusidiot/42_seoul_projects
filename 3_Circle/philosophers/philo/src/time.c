@@ -6,7 +6,7 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 05:13:05 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/26 06:11:39 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/11/28 11:19:18 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	timestamp(long long *time)
 	return (TRUE);
 }
 
-void	wait_interval(t_philo *philo, long long start, long long interval)
+void	wait_time(t_philo *philo, long long start, long long interval)
 {
 	long long	current;
 

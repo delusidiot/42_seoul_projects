@@ -6,7 +6,7 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 05:13:00 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/28 08:58:02 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/11/28 11:19:08 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	philo_eat(t_philo *philo)
 	if (!timestamp(&(philo->current))
 		|| !print_state(EATING, philo))
 		pthread_mutex_unlock(&philo->info->meal);
-	wait_interval(philo, philo->current, philo->info->time_to_eat);
+	wait_time(philo, philo->current, philo->info->time_to_eat);
 	++(philo->count);
 	if (philo->count == philo->info->must_eat)
 	{
@@ -51,7 +51,7 @@ void	philo_sleep(t_philo *philo)
 	cur = 0;
 	if (!timestamp(&cur) || !print_state(SLEEPING, philo))
 		pthread_mutex_unlock(&philo->info->meal);
-	wait_interval(philo, cur, philo->info->time_to_sleep);
+	wait_time(philo, cur, philo->info->time_to_sleep);
 }
 
 void	philo_think(t_philo *philo)

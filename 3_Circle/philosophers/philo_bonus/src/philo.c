@@ -6,7 +6,7 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 06:02:31 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/28 09:53:51 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/11/28 11:17:32 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	*monitor_died(void *info_ptr)
 	info = (t_info *)info_ptr;
 	if (!timestamp(&current))
 		sem_post(info->sem_meal);
-	wait_interval(info, current, info->time_to_die - 10);
+	wait_time(info, current, info->time_to_die - 10);
 	while (TRUE)
 	{
 		if (!timestamp(&current))
@@ -60,7 +60,7 @@ void	*routine(t_info *info)
 	if (!timestamp(&info->philo[info->index].current))
 		sem_post(info->sem_meal);
 	if (info->index % 2)
-		wait_interval(info, info->philo[info->index].current, 100);
+		wait_time(info, info->philo[info->index].current, 100);
 	while (TRUE)
 	{
 		take_fork(info);

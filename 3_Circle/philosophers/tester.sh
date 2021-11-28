@@ -7,14 +7,13 @@ echo '\e[91m _____ _   _ _                 _                  _____        _
                           |_|                                              \e[0m\n'
 
 if [ "$#" -ne 2 ]; then
-    echo "Usage: start.sh <Project Folder> <Test Type>"
-    echo "\tType 0: test philo, philo_bonus"
+    echo "Usage: tester.sh <Project Folder> <Test Type>"
     echo "\tType 1: test philo only"
     echo "\tType 2: test philo_bonus only"
     exit
 fi
 
-if [ "$2" -gt 2 -o "$2" -lt 0 ]; then
+if [ "$2" -gt 2 -o "$2" -lt 1 ]; then
     echo "[Error]: Wrong Arguments"
     exit
 fi
@@ -24,7 +23,7 @@ echo "[+] Test Type: $2\e[0m\n"
 echo "\e[94m[+] In Case of a failed test, please check ./errors_log file for more information\e[0m\n"
 
 error_log ()
-{
+
     echo "[$1-$2]: $3" >> ./errors_log
 }
 
@@ -162,7 +161,7 @@ test_six ()
         printf "\r\e[92m[+] Test #6 Succeeded\e[0m\n"
     else
         printf "\r\e[91m[+] Test #6 Failed\e[0m\n"
-        error_log $1 "Test #6" "Given 10 410 200 200 arguments to $1, 10 processes should be forked, each process for a philosopher !"
+		error_log $1 "Test #6" "Given 10 410 200 200 arguments to $1, 10 processes should be forked, each process for a philosopher !$forks"
     fi
     pkill $1
 }

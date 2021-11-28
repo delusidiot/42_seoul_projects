@@ -6,7 +6,7 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 06:05:22 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/28 09:36:18 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/11/28 11:17:54 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	philo_eat(t_info *info)
 	if (!timestamp(&info->philo[info->index].current)
 		|| !print_state(EATING, info))
 		sem_post(info->sem_meal);
-	wait_interval(info, info->philo[info->index].current, info->time_to_eat);
+	wait_time(info, info->philo[info->index].current, info->time_to_eat);
 	++(info->philo[info->index].count);
 	if (info->philo[info->index].count == info->must_eat)
 		if (sem_post(info->sem_full) == _ERROR)
@@ -48,7 +48,7 @@ void	philo_sleep(t_info *info)
 	if (!timestamp(&cur)
 		|| !print_state(SLEEPING, info))
 		sem_post(info->sem_meal);
-	wait_interval(info, cur, info->time_to_sleep);
+	wait_time(info, cur, info->time_to_sleep);
 }
 
 void	philo_think(t_info *info)

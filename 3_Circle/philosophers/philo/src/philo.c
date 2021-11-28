@@ -6,7 +6,7 @@
 /*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 05:12:54 by jjeon             #+#    #+#             */
-/*   Updated: 2021/11/27 08:00:51 by jjeon            ###   ########.fr       */
+/*   Updated: 2021/11/28 11:18:49 by jjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	*monitor(void *ptr_philo)
 	philo = (t_philo *)ptr_philo;
 	if (!timestamp(&current))
 		pthread_mutex_unlock(&philo->info->meal);
-	wait_interval(philo, current, philo->info->time_to_die - 10);
+	wait_time(philo, current, philo->info->time_to_die - 10);
 	while (TRUE)
 	{
 		if (!timestamp(&current))
@@ -42,7 +42,7 @@ static void	*routine(void *ptr_philo)
 	if (!timestamp(&philo->current))
 		pthread_mutex_unlock(&philo->info->meal);
 	if (philo->index % 2)
-		wait_interval(philo, philo->current, 100);
+		wait_time(philo, philo->current, 100);
 	while (TRUE)
 	{
 		take_fork(philo);
