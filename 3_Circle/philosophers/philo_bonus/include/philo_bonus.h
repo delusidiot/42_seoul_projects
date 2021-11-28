@@ -25,7 +25,6 @@
 # include <string.h>
 # include "get_next_line.h"
 # include "libft.h"
-# include "color.h"
 
 typedef pthread_t		t_thread;
 
