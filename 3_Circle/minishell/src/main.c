@@ -26,7 +26,7 @@ static void	*input_stream(t_user *user)
 	input = prompt(user);
 	if (!input)
 	{
-		ft_putstr_fd("\n", STDOUT_FILENO);
+		ft_putstr_fd("exit\n", STDOUT_FILENO);
 		return (NULL);
 	}
 	printf("%s\n", input);

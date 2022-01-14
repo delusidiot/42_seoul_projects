@@ -15,16 +15,9 @@
 # include "font_color.h"
 # include "libft.h"
 
-typedef enum e_token_type {
-	TYPE_NULL,
-	TYPE_WORD,
-	TYPE_PIPE,
-	TYPE_DOUBLE_QUOTES,
-	TYPE_SINGLE_QUOTES,
-	TYPE_REDIRECT,
-	TYPE_LOGICAL_OPERATION,
-	TYPE_WILDCARD,
-} t_token_type;
+# define ENV_HOME "HOME"
+# define ENV_USER "USER"
+# define ENV_PATH "PATH"
 
 extern int errno;
 
@@ -33,19 +26,10 @@ typedef struct s_user {
 	char	*home_dir;
 	char	*pwd;
 	char	*username;
+	char	*path;
 	int		exit_status;
 } t_user;
 
-typedef struct s_token {
-	t_token_type type;
-	char	*str;
-}	t_token;
-
-typedef struct s_token_state{
-	t_token *token;
-	int length;
-	int size;
-} t_token_state;
 /*
  * signal/signal.c 
  */
