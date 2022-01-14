@@ -24,7 +24,8 @@ CFLAGS		+=	$(IFLAGS) $(LFLAGS)
 #                                Mandatory Files                               #
 # **************************************************************************** #
 
-FILES		=	startup/start_minishell.c \
+FILES		=	signal/signal.c \
+				startup/start_minishell.c \
 				prompt/prompt.c \
 				prompt/print_prompt.c \
 				main.c

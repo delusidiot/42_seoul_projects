@@ -1,23 +1,29 @@
 #include "minishell.h"
 
-static void	signal_handler(int signo)
+static void sigint_handler(int signo)
 {
 	pid_t	pid;
-	int	status;
+	int		status;
 
 	pid = waitpid(-1, &status, WNOHANG);
-	if (signo == SIGINT)
+	if (signo == SIGINT && pid == -1)
 	{
-
+		rl_on_new_line();
+		rl_replace_line("", 0);
+		ft_putstr_fd("\n", STDOUT_FILENO);
+		rl_redisplay();
 	}
-	else if (signo == SIGQUIT)
-	{
+}
 
-	}
+static void sigquit_handler(int signo)
+{
+	(void)signo;
+	ft_putstr_fd("\b\b  \b\b", STDOUT_FILENO);
+	return ;
 }
 
 void	set_signal(void)
 {
-	signal(SIGINT, signal_handler);
-	signal(SIGQUIT, signal_handler);
+	signal(SIGINT, sigint_handler);
+	signal(SIGQUIT, sigquit_handler);
 }

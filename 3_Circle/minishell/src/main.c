@@ -25,10 +25,13 @@ static void	*input_stream(t_user *user)
 
 	input = prompt(user);
 	if (!input)
+	{
+		ft_putstr_fd("\n", STDOUT_FILENO);
 		return (NULL);
+	}
 	printf("%s\n", input);
 	free(input);
-	// Lexer
+	// Lexer (" , here_doc)
 
 	// return Token
 
@@ -44,7 +47,7 @@ int main(int argc, char** argv, char **envp)
 	t_user	user;
 
 	(void)argv;
-	(void)envp;
+	set_signal();
 	init_user(&user);
 	while(argc)
 	{

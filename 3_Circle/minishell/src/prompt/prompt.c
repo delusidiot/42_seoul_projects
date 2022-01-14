@@ -1,23 +1,12 @@
 #include "minishell.h"
 
-char	*select_prompt(char *input, t_user *user)
-{
-	char *prompt;
-
-	if (!input)
-		prompt = prompt1(user);
-	else
-		prompt = prompt2(user);
-	return (prompt);
-}
-
 char	*prompt(t_user *user)
 {
 	char *input;
 	char *prompt;
 
 	input = NULL;
-	prompt = select_prompt(input, user);
+	prompt = prompt1(user);
 	if (!prompt)
 	{
 		errno = EIDRM; // change errno num!
@@ -29,3 +18,5 @@ char	*prompt(t_user *user)
 	free(prompt);
 	return (input);
 }
+
+// here_doc prompt
