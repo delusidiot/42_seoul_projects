@@ -1,7 +1,5 @@
 #include "minishell.h"
 
-// rl_funtion is only signal
-
 static void *executor(t_user *user, void *result, char **envp)
 {
 	(void)user;
@@ -29,8 +27,8 @@ static void	*input_stream(t_user *user)
 		ft_putstr_fd("exit\n", STDOUT_FILENO);
 		return (NULL);
 	}
-	printf("%s\n", input);
-	free(input);
+	// !ft_strncmp(input, "exit\n", ft_strlen(input)) exit_status return...
+	
 	// Lexer (" , here_doc)
 
 	// return Token
@@ -38,6 +36,10 @@ static void	*input_stream(t_user *user)
 	// Parser
 
 	// Parser result return;
+
+	// TEST PRINTF
+	printf("%s\n", input);
+	free(input);
 	return (input);
 }
 

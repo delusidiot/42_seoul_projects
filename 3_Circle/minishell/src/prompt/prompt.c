@@ -19,4 +19,20 @@ char	*prompt(t_user *user)
 	return (input);
 }
 
-// here_doc prompt
+char	*read_here_doc(int fd, t_user *user)
+{
+	char	*input;
+	char	*prompt;
+	
+	prompt = prompt2(user);
+	while (TRUE)
+	{
+		input = readline(prompt);
+		if (!ft_strncmp("here", input, ft_strlen("here")))
+			break;
+		write(fd, input, ft_strlen(input));
+		free(input);
+	}
+	close(fd);
+	return (input);
+}
