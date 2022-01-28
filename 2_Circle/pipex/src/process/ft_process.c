@@ -12,10 +12,8 @@
 
 #include "ft_pipex.h"
 
-void	parent_process(pid_t pid, int index, t_pipex *p)
+void	parent_process(int index, t_pipex *p)
 {
-	int	status;
-
 	if (index == 0)
 		close(p->pipe_a[WRITE]);
 	else if (index == p->end_index - 1 && (index & 1))
@@ -35,7 +33,6 @@ void	parent_process(pid_t pid, int index, t_pipex *p)
 			close(p->pipe_b[READ]);
 		}
 	}
-	waitpid(pid, &status, 0);
 }
 
 void	child_process(int index, t_pipex *p)
@@ -72,6 +69,7 @@ void	pipex(t_pipex *p)
 	pid_t	pid;
 	int		i;
 	int		*pipe_fd;
+	int		status;
 
 	i = -1;
 	while (++i < p->end_index)
@@ -85,8 +83,9 @@ void	pipex(t_pipex *p)
 		if (pid < 0)
 			error_exit("fork error: ", p);
 		if (pid > 0)
-			parent_process(pid, i, p);
+			parent_process(i, p);
 		else
 			child_process(i, p);
 	}
+	while (wait(&status) > 0);
 }
