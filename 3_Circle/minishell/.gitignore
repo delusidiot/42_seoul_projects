@@ -75,5 +75,9 @@ dkms.conf
 .ionide
 
 minishell
+/obj
+/lib/libft/obj
+/lib/libft/libft.a
+memcheck.txt
 
 # End of https://www.toptal.com/developers/gitignore/api/c

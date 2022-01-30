@@ -24,7 +24,24 @@ CFLAGS		+=	$(IFLAGS) $(LFLAGS)
 #                                Mandatory Files                               #
 # **************************************************************************** #
 
-FILES		=	signal/signal.c \
+FILES		=	parser/lexical_analyzer.c \
+				parser/tokenizer.c \
+				parser/source.c \
+				parser/syntax_analyzer.c \
+				parser/syntax_AST.c \
+				parser/syntax_cmd.c \
+				parser/free_AST.c \
+				parser/print_AST.c \
+				parser/utils.c \
+				executor/exec_command.c \
+				executor/exec_pipe.c \
+				executor/exec_redirect.c \
+				executor/exec_builtins.c \
+				executor/executor.c \
+				executor/utils.c \
+				exception/exception.c \
+				exception/exec_exception.c \
+				signal/signal.c \
 				startup/start_minishell.c \
 				prompt/prompt.c \
 				prompt/print_prompt.c \

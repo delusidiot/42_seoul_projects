@@ -12,6 +12,8 @@ static void sigint_handler(int signo)
 		rl_replace_line("", 0);
 		ft_putstr_fd("\n", STDOUT_FILENO);
 		rl_redisplay();
+		//test
+		exit(0);
 	}
 }
 
@@ -26,4 +28,27 @@ void	set_signal(void)
 {
 	signal(SIGINT, sigint_handler);
 	signal(SIGQUIT, sigquit_handler);
+}
+
+int		status_signal_handler(int status)
+{
+	int	sig;
+
+	if (WIFEXITED(status))
+		return (WEXITSTATUS(status));
+	if (WIFSIGNALED(status))
+	{
+		sig = WTERMSIG(status);
+		if (sig == SIGINT)
+			return (EOWNERDEAD);
+		if (sig == SIGQUIT)
+		{
+			ft_putstr_fd("Quit\n", STDOUT_FILENO);
+			return (ENOTRECOVERABLE);
+		}
+		if (sig == SIGPIPE)// test
+			ft_putstr_fd("PIPE ERROR\n", STDOUT_FILENO);
+		return (EKEYREVOKED + sig);
+	}
+	return (EPERM);
 }

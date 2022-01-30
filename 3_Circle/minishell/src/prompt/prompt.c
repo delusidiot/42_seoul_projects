@@ -6,7 +6,10 @@ char	*prompt(t_user *user)
 	char *prompt;
 
 	input = NULL;
-	prompt = prompt1(user);
+	if (user)
+		prompt = prompt1(user);
+	else
+		prompt = prompt2();
 	if (!prompt)
 	{
 		errno = EIDRM; // change errno num!
@@ -19,12 +22,12 @@ char	*prompt(t_user *user)
 	return (input);
 }
 
-char	*read_here_doc(int fd, t_user *user)
+char	*read_here_doc(int fd)
 {
 	char	*input;
 	char	*prompt;
 	
-	prompt = prompt2(user);
+	prompt = prompt2();
 	while (TRUE)
 	{
 		input = readline(prompt);
