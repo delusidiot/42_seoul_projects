@@ -76,8 +76,12 @@ dkms.conf
 
 minishell
 /obj
+/obj_bonus
 /lib/libft/obj
 /lib/libft/libft.a
 memcheck.txt
+
+# norm packages
+venv
 
 # End of https://www.toptal.com/developers/gitignore/api/c

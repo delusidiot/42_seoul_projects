@@ -1,39 +1,55 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   signal.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/12 09:30:08 by jjeon             #+#    #+#             */
+/*   Updated: 2022/02/14 12:53:59 by jjeon            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-static void sigint_handler(int signo)
+static void	command_signal_handler(int signo)
 {
-	pid_t	pid;
-	int		status;
-
-	pid = waitpid(-1, &status, WNOHANG);
-	if (signo == SIGINT && pid == -1)
+	if (signo == SIGINT)
 	{
 		rl_on_new_line();
 		rl_replace_line("", 0);
-		ft_putstr_fd("\n", STDOUT_FILENO);
+		ft_putstr_fd("\n", STDOUT_NO);
 		rl_redisplay();
-		//test
-		exit(0);
 	}
+	else if (signo == SIGQUIT)
+		ft_putstr_fd("\b\b  \b\b", STDOUT_NO);
 }
 
-static void sigquit_handler(int signo)
+static void	exec_signal_handler(int signo)
 {
-	(void)signo;
-	ft_putstr_fd("\b\b  \b\b", STDOUT_FILENO);
-	return ;
+	if (signo == SIGINT)
+		ft_putstr_fd("\n", STDOUT_NO);
+	else if (signo == SIGQUIT)
+		ft_putstr_fd("", STDOUT_NO);
 }
 
-void	set_signal(void)
+void	set_command_signal(void)
 {
-	signal(SIGINT, sigint_handler);
-	signal(SIGQUIT, sigquit_handler);
+	signal(SIGINT, command_signal_handler);
+	signal(SIGQUIT, SIG_IGN);
 }
 
-int		status_signal_handler(int status)
+void	set_exec_signal(void)
+{
+	signal(SIGINT, exec_signal_handler);
+	signal(SIGQUIT, exec_signal_handler);
+}
+
+int	status_signal_handler(int status)
 {
 	int	sig;
 
+	sig = 0;
 	if (WIFEXITED(status))
 		return (WEXITSTATUS(status));
 	if (WIFSIGNALED(status))
@@ -43,12 +59,10 @@ int		status_signal_handler(int status)
 			return (EOWNERDEAD);
 		if (sig == SIGQUIT)
 		{
-			ft_putstr_fd("Quit\n", STDOUT_FILENO);
-			return (ENOTRECOVERABLE);
+			ft_putstr_fd("Quit\n", STDOUT_NO);
+			return (131);
 		}
-		if (sig == SIGPIPE)// test
-			ft_putstr_fd("PIPE ERROR\n", STDOUT_FILENO);
-		return (EKEYREVOKED + sig);
+		return (128 + sig);
 	}
 	return (EPERM);
 }
