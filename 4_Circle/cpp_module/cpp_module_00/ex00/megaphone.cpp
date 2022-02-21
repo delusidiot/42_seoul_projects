@@ -9,8 +9,8 @@ int	main(int argc, char const *argv[])
 		for (int i = 1; i < argc; i++)
 		{
 			std::string str(argv[i]);
-			for (char c: str)
-				std::cout << (char)std::toupper(c);
+			for (size_t j = 0; j < str.length(); j++)
+				std::cout << (char)std::toupper(str[j]);
 		}
 		std::cout << std::endl;
 	}

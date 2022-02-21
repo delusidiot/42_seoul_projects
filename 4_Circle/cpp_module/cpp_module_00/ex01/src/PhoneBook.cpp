@@ -4,6 +4,11 @@
 # include <iomanip>
 # include <sstream>
 
+PhoneBook::PhoneBook()
+{
+	this->index = 0;
+}
+
 void PhoneBook::printAllPhoneBook(void) const
 {
 	int curr = (index > MAX_INDEX)? MAX_INDEX : index;
