@@ -21,8 +21,8 @@ Karen::~Karen(void)
 
 Karen::logLevel Karen::getLogLevelFromString(std::string level)
 {
-	for (auto &c: level)
-		c = toupper(c);
+	for (size_t i = 0; i < level.length(); i++)
+		level[i] = toupper(level[i]);
 	if (level == "DEBUG")
 		return Karen::DEBUG;
 	if (level == "INFO")
