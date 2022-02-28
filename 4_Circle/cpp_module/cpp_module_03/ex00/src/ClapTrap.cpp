@@ -30,7 +30,7 @@ std::ostream &operator<<(std::ostream &os, ClapTrap const & instance)
 	return os;
 }
 
-void ClapTrap::attack(std::string const &target)
+void ClapTrap::attack(std::string const &target) const
 {
 	std::cout << "ClapTrap " << this->getName() << " attack " << target	<< ", causing " << this->_attackDamage << " points of damage!" << std::endl;
 }
