@@ -1,7 +1,7 @@
 NAME		=	diamondtrap
 
 CXX			=	c++
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror -std=c++98
 UNAME		=	$(shell uname)
 
 RM			=	rm

@@ -1,5 +1,5 @@
-#ifndef EX01_FIXED_HPP_
-# define EX01_FIXED_HPP_
+#ifndef FIXED_HPP_
+# define FIXED_HPP_
 
 # include <iostream>
 class Fixed
@@ -15,7 +15,7 @@ public:
 	Fixed(const Fixed& src);
 	~Fixed(void);
 
-	Fixed&	operator=(const Fixed& other);
+	Fixed&	operator=(const Fixed& rst);
 
 	int		toInt(void) const;
 	float	toFloat(void) const;
@@ -25,4 +25,4 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& os, const Fixed& fixed);
-#endif // EX01_FIXED_HPP_
+#endif

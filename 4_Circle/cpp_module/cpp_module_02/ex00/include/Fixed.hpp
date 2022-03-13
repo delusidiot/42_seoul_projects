@@ -1,5 +1,5 @@
-#ifndef EX00_FIXED_HPP_
-# define EX00_FIXED_HPP_
+#ifndef FIXED_HPP_
+# define FIXED_HPP_
 
 # include <iostream>
 
@@ -13,10 +13,10 @@ public:
 	Fixed(const Fixed &src);
 	~Fixed(void);
 
-	Fixed &operator=( const Fixed &other );
+	Fixed &operator=(const Fixed &rhs);
 
-	int getRawBits( void ) const;
-	void setRawBits( const int raw );
+	int getRawBits(void) const;
+	void setRawBits(const int raw);
 };
 
-#endif //FIXED_HPP_
+#endif
