@@ -1,6 +1,8 @@
 #ifndef FIXED_HPP_
 # define FIXED_HPP_
+
 # include <iostream>
+
 class Fixed
 {
 private:

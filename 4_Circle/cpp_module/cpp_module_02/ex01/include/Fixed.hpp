@@ -25,4 +25,5 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& os, const Fixed& fixed);
+
 #endif
