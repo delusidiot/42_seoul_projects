@@ -1,5 +1,15 @@
 #include "ScavTrap.hpp"
 
+ScavTrap::ScavTrap(void)
+: ClapTrap()
+{
+	_hitPoints = 100;
+	_energyPoints = 50;
+	_attackDamage = 20;
+	_initialEnergyPoints = _energyPoints;
+	std::cout << "Default constructor for ScavTrap called." << std::endl;
+}
+
 ScavTrap::ScavTrap(const std::string name)
 : ClapTrap(name)
 {

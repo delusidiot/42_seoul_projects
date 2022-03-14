@@ -1,5 +1,11 @@
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap(void)
+: _name("Anonymous"), _hitPoints(10), _energyPoints(10), _attackDamage(0), _initialEnergyPoints(_energyPoints)
+{
+	std::cout << "Default constructor called" << std::endl;
+}
+
 ClapTrap::ClapTrap(const std::string name)
 : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0), _initialEnergyPoints(_energyPoints)
 {
@@ -24,7 +30,7 @@ ClapTrap &ClapTrap::operator=(ClapTrap const &rhs)
 	return *this;
 }
 
-std::ostream &operator<<(std::ostream &os, ClapTrap const & instance)
+std::ostream &operator<<(std::ostream &os, ClapTrap const &instance)
 {
 	os << "ClapTrap " << instance.getName();
 	return os;

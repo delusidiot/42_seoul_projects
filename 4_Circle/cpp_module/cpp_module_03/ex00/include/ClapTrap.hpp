@@ -12,6 +12,7 @@ protected:
 	int			_attackDamage;
 	int			_initialEnergyPoints;
 public:
+	ClapTrap(void);
 	ClapTrap(const std::string name);
 	ClapTrap(const ClapTrap &src);
 	virtual ~ClapTrap(void);
@@ -25,6 +26,6 @@ public:
 	const std::string	&getName(void) const;
 };
 
-std::ostream	&operator<<(std::ostream &ostream, const ClapTrap &myClass);
+std::ostream &operator<<(std::ostream &os, ClapTrap const &instance);
 
 #endif
