@@ -1,7 +1,11 @@
 #include "TypeAnalyst.hpp"
-#include "utils.hpp"
 
-int	main( int argc, char **argv )
+void	print_usage(void)
+{
+	std::cout << "./convert {char, int, float or double}" << std::endl;
+}
+
+int	main(int argc, char **argv)
 {
 	TypeAnalyst typeAnalyst;
 
@@ -20,6 +24,6 @@ int	main( int argc, char **argv )
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
-		print_help();
+		print_usage();
 	}
 }

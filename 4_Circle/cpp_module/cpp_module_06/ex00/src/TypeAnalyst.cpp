@@ -1,6 +1,6 @@
 #include <cmath>
 #include <string>
-#include "utils.hpp"
+#include <limits>
 #include "TypeAnalyst.hpp"
 
 TypeAnalyst::TypeAnalyst(void)
@@ -13,7 +13,7 @@ TypeAnalyst::TypeAnalyst(char *input)
 	this->analyseNewInput(input);
 }
 
-TypeAnalyst::TypeAnalyst(TypeAnalyst const &src)
+TypeAnalyst::TypeAnalyst(const TypeAnalyst &src)
 {
 	*this = src;
 }
@@ -22,7 +22,7 @@ TypeAnalyst::~TypeAnalyst(void)
 {
 }
 
-TypeAnalyst &TypeAnalyst::operator=(TypeAnalyst const &rhs)
+TypeAnalyst &TypeAnalyst::operator=(const TypeAnalyst &rhs)
 {
 	this->_selectedType = rhs._selectedType;
 	this->_charScalar = rhs._charScalar;
@@ -59,6 +59,11 @@ void TypeAnalyst::resetValues(void)
 	this->_intScalar = 0;
 	this->_floatScalar = 0;
 	this->_doubleScalar = 0;
+}
+
+bool TypeAnalyst::isdigit(char c) const
+{
+	return (c >= '0' && c <= '9');
 }
 
 bool TypeAnalyst::getType(char* input)
@@ -129,7 +134,7 @@ int TypeAnalyst::handle_numeric_values(char *input) const
 		i++;
 	if (input[i] == '.' && (input[i + 1] == 'f' || input[i + 1] == 0))
 		return (TypeAnalyst::noType);
-	while (input[i] == '.' || ft_isdigit(input[i]))
+	while (input[i] == '.' || isdigit(input[i]))
 	{
 		if (input[i] == '.')
 			dotCount++;
@@ -153,20 +158,17 @@ void TypeAnalyst::printChar(void)
 	if (this->_selectedType == TypeAnalyst::intType)
 	{
 		if (this->canConvertToChar(this->_intScalar))
-			std::cout << "char: " << static_cast<char>(this->_intScalar)
-				<< std::endl;
+			std::cout << "char: " << static_cast<char>(this->_intScalar) << std::endl;
 	}
 	else if (this->_selectedType == TypeAnalyst::floatType)
 	{
 		if (this->canConvertToChar(this->_floatScalar))
-			std::cout << "char: " << static_cast<char>(this->_floatScalar)
-				<< std::endl;
+			std::cout << "char: " << static_cast<char>(this->_floatScalar) << std::endl;
 	}
 	else if (this->_selectedType == TypeAnalyst::doubleType)
 	{
 		if (this->canConvertToChar(this->_doubleScalar))
-			std::cout << "char: " << static_cast<char>(this->_doubleScalar)
-				<< std::endl;
+			std::cout << "char: " << static_cast<char>(this->_doubleScalar) << std::endl;
 	}
 	else
 		std::cout << "char: " << this->_charScalar << std::endl;
@@ -181,6 +183,24 @@ bool TypeAnalyst::canConvertToChar(double number)
 	else
 		return true;
 	return false;
+}
+
+bool TypeAnalyst::canConvertToInt(double number)
+{
+	return (number <= std::numeric_limits<int>::max()
+			&& number >= std::numeric_limits<int>::min()
+			&& number != std::numeric_limits<double>::infinity()
+			&& number != -std::numeric_limits<double>::infinity()
+			&& number != std::numeric_limits<double>::quiet_NaN());
+}
+
+bool TypeAnalyst::canConvertToFloat(double number)
+{
+	return ((number <= std::numeric_limits<float>::max()
+			&& number >= -std::numeric_limits<float>::max())
+			|| number == std::numeric_limits<double>::infinity()
+			|| number == -std::numeric_limits<double>::infinity()
+			|| std::isnan(number));
 }
 
 void TypeAnalyst::printInt(void)
@@ -247,4 +267,11 @@ void TypeAnalyst::printDouble(void)
 		std::cout << "double: " << this->_doubleScalar
 			<< printDotZero(static_cast<double>(this->_doubleScalar))
 			<< std::endl;
+}
+
+const char	*TypeAnalyst::printDotZero(double number)
+{
+	if (number - static_cast<int>(number) == 0.0)
+		return (".0");
+	return ("");
 }

@@ -19,10 +19,15 @@ private:
 	int		handle_special_cases(char *input) const;
 	int		handle_numeric_values(char *input) const;
 	void	printChar(void);
+	bool	isdigit(char c) const;
 	bool	canConvertToChar(double number);
+	bool	canConvertToInt(double number);
+	bool	canConvertToFloat(double number);
+	
 	void	printInt(void);
 	void	printFloat(void);
 	void	printDouble(void);
+	const char	*printDotZero(double number);
 
 	static const int noType = -1;
 	static const int charType = 0;

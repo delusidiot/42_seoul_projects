@@ -14,7 +14,6 @@ INC_DIR 	=	include
 IFLAGS		=	-I$(INC_DIR)
 
 FILES		=	TypeAnalyst.cpp \
-				utils.cpp \
 				main.cpp
 
 SRCS		=	$(addprefix $(SRC_DIR)/, $(FILES))

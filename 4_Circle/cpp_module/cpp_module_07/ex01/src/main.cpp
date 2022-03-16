@@ -13,7 +13,7 @@ void	setRandomValue(int &number)
 	number = std::rand() % 100;
 }
 
-int	main( void )
+int	main(void)
 {
 	std::string	strTable[3];
 	int			*intTable = new int[5];

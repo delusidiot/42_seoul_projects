@@ -21,5 +21,8 @@ int	main( void )
 	ptr->data = "Hi, how's going";
 	raw = serialize(ptr);
 	new_ptr = deserialize(raw);
+	std::cout << "ptr->data = " << ptr->data << std::endl;
 	std::cout << "new_ptr->data = " << new_ptr->data << std::endl;
+	std::cout << ptr << std::endl;
+	std::cout << new_ptr << std::endl;
 }
