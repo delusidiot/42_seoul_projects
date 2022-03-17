@@ -37,7 +37,9 @@ MateriaSource &MateriaSource::operator=(MateriaSource const &rhs)
 
 void MateriaSource::learnMateria(AMateria *materia_to_learn)
 {
-	if (this->_number_learned >= MateriaSource::_materias_size)
+	if (materia_to_learn == NULL)
+		std::cout << "Can't learn NULL!" << std::endl;
+	else if (this->_number_learned >= MateriaSource::_materias_size)
 		std::cout << "Can't learn any more materias" << std::endl;
 	else
 	{

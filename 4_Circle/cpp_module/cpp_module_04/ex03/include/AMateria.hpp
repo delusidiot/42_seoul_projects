@@ -11,8 +11,12 @@ class AMateria
 protected:
 	std::string	_type;
 public:
+	AMateria(void);
 	AMateria(const std::string &type);
-	virtual	~AMateria(){}
+	AMateria(AMateria const &src);
+	virtual	~AMateria();
+
+	AMateria	&operator=(const AMateria &rhs);
 
 	const std::string	&getType(void) const;
 	virtual AMateria	*clone(void) const = 0;

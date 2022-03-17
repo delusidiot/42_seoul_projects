@@ -55,19 +55,23 @@ void Character::unequip(int idx)
 {
 	int i;
 
+	if (idx < 0)
+		return;
 	i = idx + 1;
-	while (i < Character::_inventory_size && this->_inventory[i])
+	while (i < Character::_inventory_size && this->_inventory[i - 1])
 	{
 		this->_inventory[i - 1] = this->_inventory[i];
 		i++;
 	}
-	this->_inventory[i] = NULL;
+	if (i < Character::_inventory_size)
+		this->_inventory[i] = NULL;
 }
 
 void Character::use(int idx, ICharacter& target)
 {
+	if (idx < 0 || idx >= Character::_inventory_size || !this->_inventory[idx])
+		return ;
 	this->_inventory[idx]->use(target);
-	this->unequip(idx);
 }
 
 void Character::printInventory(void) const
