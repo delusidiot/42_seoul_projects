@@ -2,6 +2,8 @@
 #include <cstdlib>
 #include "Array.hpp"
 
+#define MAX_VAL 750
+
 int	testMain(void)
 {
 	Array<int>			intArray;
@@ -15,13 +17,21 @@ int	testMain(void)
 	stringArray[4] = "Doing great thanks!";
 	stringArray[5] = "You're very welcome";
 	std::cout << "intArray.size() = " << intArray.getSize() << std::endl;
-	std::cout << "stringArray.size() = " << stringArray.getSize() << std::endl;
+	std::cout << "stringArray.size() = " << stringArray.getSize() << std::endl << std::endl;
 	otherStringArray = stringArray;
 	otherStringArray[3] = "I'm good, how about you?";
+    std::cout << "stringArray[3] = " << stringArray[3] << std::endl;
+	std::cout << "otherStringArray[3] = " << otherStringArray[3] << std::endl;
+    std::cout << "otherStringArray.size() = " << otherStringArray.getSize() << std::endl << std::endl;
+    Array<std::string> anotherStringArray(stringArray);
+    anotherStringArray[3] = "I'm fine.";
+    std::cout << "stringArray[3] = " << stringArray[3] << std::endl;
+	std::cout << "otherStringArray[3] = " << anotherStringArray[3] << std::endl;
+    std::cout << "anotherStringArray.size() = " << anotherStringArray.getSize() << std::endl << std::endl;
 
 	try
 	{
-		std::cout << stringArray[59] << std::endl;
+		std::cout << stringArray[10] << std::endl;
 	}
 	catch (std::exception &e)
 	{
@@ -39,8 +49,6 @@ int	testMain(void)
 
 	return 0;
 }
-
-#define MAX_VAL 750
 
 int project_main(void)
 {
@@ -94,6 +102,7 @@ int project_main(void)
 
 int main(void)
 {
+    Array<int> a(0);
 	std::cout << "module07 in main function" << std::endl;
 	project_main();
 	std::cout << std::endl;

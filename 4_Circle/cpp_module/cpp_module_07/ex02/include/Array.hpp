@@ -10,7 +10,7 @@ private:
 	int		_size;
 	T		*_array;
 public:
-	Array<T>(void): _size(0), _array(NULL)
+	Array<T>(void): _size(0), _array(new T[0])
 	{
 	}
 	Array<T>(const unsigned int size): _size(size)
@@ -26,7 +26,7 @@ public:
 	}
 	~Array<T>(void)
 	{
-		if (this->_size > 0)
+		if (this->_size >= 0)
 			delete[] this->_array;
 	}
 
