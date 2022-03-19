@@ -59,8 +59,7 @@ void	Span::randomFill(void)
 		this->addNumber(rand() % (this->maxSize() * 10));
 }
 
-void	Span::addByIteratorRange(std::vector<int>::iterator begin,
-		std::vector<int>::iterator end)
+void	Span::addByIteratorRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
 {
 	std::vector<int>	tmp(begin, end);
 

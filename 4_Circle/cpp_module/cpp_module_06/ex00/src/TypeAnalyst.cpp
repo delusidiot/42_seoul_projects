@@ -1,6 +1,7 @@
 #include <cmath>
 #include <string>
 #include <limits>
+#include <cstdlib>
 #include "TypeAnalyst.hpp"
 
 TypeAnalyst::TypeAnalyst(void)

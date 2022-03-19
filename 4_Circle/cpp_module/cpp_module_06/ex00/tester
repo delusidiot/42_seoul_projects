@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mk_test() {
+convert_test() {
 	echo "./convert" "$*"
 	./convert $@
 	echo "check output and press any key to continue"
@@ -15,60 +15,60 @@ fi
 echo ""
 
 echo "Start the tests:"
-mk_test a
+convert_test a
 
-mk_test 1
+convert_test 1
 
-mk_test 1.34f
+convert_test 1.34f
 
-mk_test 4.2
+convert_test 4.2
 
-mk_test .256f
+convert_test .256f
 
-mk_test -.256f
+convert_test -.256f
 
-mk_test 18.f
+convert_test 18.f
 
-mk_test .
+convert_test .
 
-mk_test f
+convert_test f
 
-mk_test -
+convert_test -
 
-mk_test 0.
+convert_test 0.
 
-mk_test nan
+convert_test nan
 
-mk_test nanf
+convert_test nanf
 
-mk_test +inf
+convert_test +inf
 
-mk_test -inff
+convert_test -inff
 
-mk_test inf
+convert_test inf
 
-mk_test 642
+convert_test 642
 
-mk_test 42
+convert_test 42
 
 echo "bigger than FLOAT_MAX but smaller than DOUBLE_MAX"
-mk_test 5000000000000000000000000000000000000000.0
+convert_test 5000000000000000000000000000000000000000.0
 
 echo "bigger than DOUBLE_MAX"
-mk_test 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.0
+convert_test 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.0
 
-mk_test x 0.3542 64 62.0f
+convert_test x 0.3542 64 62.0f
 
-mk_test bonjour
+convert_test bonjour
 
-mk_test 18f
+convert_test 18f
 
-mk_test .f
+convert_test .f
 
-mk_test -.f
+convert_test -.f
 
-mk_test 4.24.2
+convert_test 4.24.2
 
-mk_test 0.256f12
+convert_test 0.256f12
 
-mk_test
+convert_test

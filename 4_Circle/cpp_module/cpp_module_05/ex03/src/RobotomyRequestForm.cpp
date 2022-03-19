@@ -43,8 +43,8 @@ void	RobotomyRequestForm::execute(const Bureaucrat &executor) const
 		std::cout << "The robotomization on " << this->_target << " may or may not have been a complete and utter failure." << std::endl;
 }
 
-/* std::ostream &	operator<<( std::ostream & ostr, RobotomyRequestForm const & instance) */
-/* { */
-/* 	ostr << "The value of RobotomyRequestForm is..." << std::endl; */
-/* 	return ostr; */
-/* } */
+/* std::ostream &	operator<<( std::ostream & ostr, RobotomyRequestForm const & instance)
+{
+ 	ostr << "The value of RobotomyRequestForm is..." << std::endl;
+ 	return ostr;
+} */

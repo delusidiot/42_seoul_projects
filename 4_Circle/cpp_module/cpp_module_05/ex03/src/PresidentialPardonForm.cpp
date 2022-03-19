@@ -38,8 +38,8 @@ void	PresidentialPardonForm::execute(const Bureaucrat &executor) const
 	std::cout << this->_target << " has been pardoned by Zafod Beeblebrox." << std::endl;
 }
 
-/* std::ostream &	operator<<( std::ostream & ostr, PresidentialPardonForm const & instance) */
-/* { */
-/* 	ostr << "The value of PresidentialPardonForm is..." << std::endl; */
-/* 	return ostr; */
-/* } */
+/* std::ostream &	operator<<( std::ostream & ostr, PresidentialPardonForm const & instance)
+{
+ 	ostr << "The value of PresidentialPardonForm is..." << std::endl;
+ 	return ostr;
+} */

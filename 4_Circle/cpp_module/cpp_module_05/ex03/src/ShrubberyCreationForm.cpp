@@ -65,8 +65,8 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 	std::cout << "Created in " << this->_target << "_shrubbery" << std::endl;
 }
 
-/* std::ostream &	operator<<( std::ostream & ostr, ShrubberyCreationForm const & instance) */
-/* { */
-/* 	ostr << "The value of ShrubberyCreationForm is..." << std::endl; */
-/* 	return ostr; */
-/* } */
+/* std::ostream &	operator<<( std::ostream & ostr, ShrubberyCreationForm const & instance)
+{
+ 	ostr << "The value of ShrubberyCreationForm is..." << std::endl;
+ 	return ostr;
+} */
