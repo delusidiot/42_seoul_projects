@@ -6,7 +6,7 @@
 #    By: jjeon <jjeon@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/12 09:31:42 by jjeon             #+#    #+#              #
-#    Updated: 2022/04/28 18:23:45 by jjeon            ###   ########.fr        #
+#    Updated: 2022/04/28 18:37:20 by jjeon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,15 +70,13 @@ $(OBJ_DIR)/%.o	:	$(SRC_DIR)/%.c
 			@mkdir -p $(@D)
 			@$(CC) -c $(CFLAGS) $< -o $@ $(IFLAGS)
 
-$(NAME)		:	$(OBJS)
+$(NAME)		:	$(OBJS) libft mlx
 			@echo $(CYAN)"Compiling $@"$(END)
-			@$(MAKE) all -C $(LIBFT_DIR)
 			@$(CC) $(OBJS) -o $(NAME) $(CFLAGS) $(LFLAGS) $(IFLAGS)
 			@echo $(GREEN)"Done $@"$(END)
 
-debug		:	$(OBJS)
+debug		:	$(OBJS) libft mlx
 			@echo $(CYAN)"Creating debug files $@"$(END)
-			@$(MAKE) all -C $(LIBFT_DIR)
 			@$(CC) $(OBJS) -g -o $(NAME) $(CFLAGS) $(LFLAGS) $(IFLAGS)
 			@echo $(GREEN)"Done $@"$(END)
 			@echo $(WHITE)"Start with \"lldb $(NAME)\""$(END)
